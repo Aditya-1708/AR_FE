@@ -81,7 +81,7 @@ const Products = () => {
                   <div className="h-72 bg-gray-100">
                     {product.img ? (
                       <img
-                        src={`http://localhost:3000/uploads/${product.img}`}
+                        src={`${import.meta.env.VITE_BACKEND_URL}/uploads/${product.img}`}
                         alt={product.name}
                         className="w-full h-full object-cover"
                         loading="lazy"

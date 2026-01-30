@@ -17,6 +17,7 @@ import Certifications from "./pages/Certifications";
 import Career from "./pages/Career";
 import Contact from "./pages/Contact";
 import ApplicationForm from "./pages/ApplicationForm";
+import AdminPanel from "./pages/AdminPanel";
 // Scroll to top or to element when route changes
 const ScrollToTopOrAnchor = () => {
   const location = useLocation();
@@ -59,6 +60,7 @@ function App() {
             <Route path="/career" element={<Career />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/application/:jobId" element={<ApplicationForm/>}/>
+            <Route path="/admin" element={<AdminPanel/>}/>
           </Routes>
         </main>
 
@@ -67,10 +69,11 @@ function App() {
 
         {/* Floating Components */}
         <WhatsAppButton />
-        <BackToTop />
+        {/* <BackToTop /> */}
       </div>
     </Router>
   );
 }
 
 export default App;
+

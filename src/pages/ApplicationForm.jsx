@@ -3,34 +3,6 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axiosInstance from "../axios";
 
-// src/data/jobs.js
-const MOCKED_JOBS_DATA = [
-  {
-    id: "frontend-dev",
-    title: "Frontend Developer",
-    location: "Bengaluru, India",
-    type: "Full-time",
-  },
-  {
-    id: "backend-dev",
-    title: "Backend Developer",
-    location: "Bengaluru, India",
-    type: "Full-time",
-  },
-  {
-    id: "fullstack-dev",
-    title: "Full Stack Developer",
-    location: "Remote",
-    type: "Internship",
-  },
-  {
-    id: "ui-ux-designer",
-    title: "UI/UX Designer",
-    location: "Remote",
-    type: "Contract",
-  },
-];
-
 function ApplicationForm() {
   const [submissionStatus, setSubmissionStatus] = useState("idle");
   const { jobId } = useParams();
@@ -43,19 +15,20 @@ function ApplicationForm() {
     statement: "",
     resume: null,
   });
+
   useEffect(() => {
-    const fetchJobs = async (jobId) => {
+    const fetchJob = async () => {
       try {
-        const job = await axiosInstance.get(`/openings/${jobId}`);
-        setTitle(job.data.title);
+        const res = await axiosInstance.get(`/openings/${jobId}`);
+        setTitle(res.data.title);
       } catch (error) {
         console.error("Failed to fetch job:", error);
       }
     };
-    if (jobId) {
-      fetchJobs(jobId);
-    }
-  }, []);
+
+    if (jobId) fetchJob();
+  }, [jobId]);
+
   const handleChange = (e) => {
     const { name, value, files } = e.target;
 
@@ -65,20 +38,28 @@ function ApplicationForm() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmissionStatus("loading");
 
-    // Mock API call
-    setTimeout(() => {
-      console.log("Application Submitted:", formData);
+    try {
+      const form = new FormData();
+
+      form.append("jobId", jobId); // ✅ FIXED
+      form.append("fullName", formData.name);
+      form.append("email", formData.email);
+      form.append("phoneNo", formData.phone);
+      form.append("wswhy", formData.statement || "");
+      form.append("resume", formData.resume);
+
+      await axiosInstance.post("/applications", form);
 
       setSubmissionStatus("success");
+
       setFormData({
         name: "",
         email: "",
         phone: "",
-        jobRole: "",
         statement: "",
         resume: null,
       });
@@ -86,7 +67,10 @@ function ApplicationForm() {
       document
         .getElementById("application-form")
         ?.scrollIntoView({ behavior: "smooth" });
-    }, 1500);
+    } catch (err) {
+      console.error(err);
+      setSubmissionStatus("error");
+    }
   };
 
   return (
@@ -99,15 +83,17 @@ function ApplicationForm() {
           <div className="bg-white shadow-xl p-8 rounded-2xl">
             {/* Header */}
             <div className="mb-8 text-center">
-              <p className="text-sm text-gray-600 mt-2">
+              <h2 className="text-2xl font-bold text-black mb-2">
+                Apply for {title}
+              </h2>
+
+              <p className="text-sm text-gray-600 mb-8 text-center">
                 Please fill in the details below. Our HR team will review your
                 application and contact you if your profile matches our
                 requirements.
               </p>
             </div>
-            <h2 className="text-2xl font-bold text-black">
-              Apply for {title}
-            </h2>
+            <h2 className="text-2xl font-bold text-black">Apply for {title}</h2>
             {/* Status Messages */}
             {submissionStatus === "loading" && (
               <div className="mb-6 rounded-lg bg-yellow-100 px-4 py-3 text-sm font-medium text-yellow-700">
@@ -120,7 +106,6 @@ function ApplicationForm() {
                 Application submitted successfully. We’ll be in touch soon.
               </div>
             )}
-
             <form onSubmit={handleSubmit} className="space-y-6 text-black">
               {/* Name & Email */}
               <div className="grid md:grid-cols-2 gap-5">

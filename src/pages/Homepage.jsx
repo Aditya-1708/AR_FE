@@ -1,19 +1,30 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { FaCogs, FaShieldAlt, FaClock, FaUsers, FaHammer, FaHeadset } from 'react-icons/fa';
-import HeroSection from '../components/HeroSection';
-import StatsCounter from '../components/StatsCounter';
-import ClientLogos from '../components/ClientLogos';
+import React from "react";
+import { Link } from "react-router-dom";
+import {
+  FaCogs,
+  FaShieldAlt,
+  FaClock,
+  FaUsers,
+  FaHammer,
+  FaHeadset,
+} from "react-icons/fa";
+import HeroSection from "../components/HeroSection";
+import StatsCounter from "../components/StatsCounter";
+import ClientLogos from "../components/ClientLogos";
 
 const Homepage = () => {
   // kept these variables (no visual changes)
-  const primaryColor = 'teal';
-  const primaryColorDark = 'teal-600';
-  const primaryColorLight = 'teal-100';
-  const headingColor = 'gray-800';
+  const primaryColor = "teal";
+  const primaryColorDark = "teal-600";
+  const primaryColorLight = "teal-100";
+  const headingColor = "gray-800";
 
   return (
     <div className="min-h-screen bg-gray-100">
+      <div className="bg-red-500 text-white p-6 rounded-xl">
+        Tailwind v4 is working 🚀
+      </div>
+
       {/* Hero Section */}
       <HeroSection />
 
@@ -31,7 +42,9 @@ const Homepage = () => {
               Why Choose Us?
             </p>
             <p className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed mt-3 sm:mt-4">
-              We are a growing and dynamic manufacturing organization dedicated to delivering excellence in precision metal fabrication and industrial engineering solutions.
+              We are a growing and dynamic manufacturing organization dedicated
+              to delivering excellence in precision metal fabrication and
+              industrial engineering solutions.
             </p>
           </div>
 
@@ -46,7 +59,9 @@ const Homepage = () => {
                   Precision Manufacturing
                 </p>
                 <p className="text-gray-700 text-sm sm:text-base">
-                  Utilizing advanced CNC machining and modern production systems, we deliver highly accurate and reliable components for industrial applications.
+                  Utilizing advanced CNC machining and modern production
+                  systems, we deliver highly accurate and reliable components
+                  for industrial applications.
                 </p>
               </div>
             </div>
@@ -61,7 +76,9 @@ const Homepage = () => {
                   Quality Assured
                 </p>
                 <p className="text-gray-700 text-sm sm:text-base">
-                  Certified under ISO 9001:2015, we maintain stringent quality control processes and partner with third-party auditors for guaranteed performance.
+                  Certified under ISO 9001:2015, we maintain stringent quality
+                  control processes and partner with third-party auditors for
+                  guaranteed performance.
                 </p>
               </div>
             </div>
@@ -76,7 +93,9 @@ const Homepage = () => {
                   On-Time Delivery
                 </p>
                 <p className="text-gray-700 text-sm sm:text-base">
-                  Our streamlined project management and efficient logistics ensure timely delivery of fabricated parts and components to meet your deadlines.
+                  Our streamlined project management and efficient logistics
+                  ensure timely delivery of fabricated parts and components to
+                  meet your deadlines.
                 </p>
               </div>
             </div>
@@ -91,7 +110,9 @@ const Homepage = () => {
                   Expert Team
                 </p>
                 <p className="text-gray-700 text-sm sm:text-base">
-                  Our skilled engineers and experienced team of fabricators and welders bring decades of expertise in structural fabrication, product design, and mechanical assembly.
+                  Our skilled engineers and experienced team of fabricators and
+                  welders bring decades of expertise in structural fabrication,
+                  product design, and mechanical assembly.
                 </p>
               </div>
             </div>
@@ -106,7 +127,9 @@ const Homepage = () => {
                   Custom Solutions
                 </p>
                 <p className="text-gray-700 text-sm sm:text-base">
-                  We provide customized fabrication and manufacturing services precisely engineered to meet unique project needs and technical standards.
+                  We provide customized fabrication and manufacturing services
+                  precisely engineered to meet unique project needs and
+                  technical standards.
                 </p>
               </div>
             </div>
@@ -118,10 +141,12 @@ const Homepage = () => {
                   <FaHeadset className="text-xl sm:text-2xl text-indigo-800 transition-all duration-300 group-hover:text-white" />
                 </div>
                 <p className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-800 transition-all duration-300 group-hover:text-indigo-500">
-                   Support
+                  Support
                 </p>
                 <p className="text-gray-700 text-sm sm:text-base">
-                  We offer around-the-clock technical and customer support to ensure uninterrupted manufacturing operations and client satisfaction.
+                  We offer around-the-clock technical and customer support to
+                  ensure uninterrupted manufacturing operations and client
+                  satisfaction.
                 </p>
               </div>
             </div>
@@ -137,7 +162,8 @@ const Homepage = () => {
               Explore Our Capabilities
             </p>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mt-3 sm:mt-4">
-              Discover our industrial fabrication expertise, engineering precision, and on-time project execution.
+              Discover our industrial fabrication expertise, engineering
+              precision, and on-time project execution.
             </p>
           </div>
 
@@ -145,9 +171,12 @@ const Homepage = () => {
             <Link to="/factory" className="group">
               <div className="bg-white p-6 sm:p-8 rounded-xl hover:shadow-lg transition duration-300 group-hover:scale-105">
                 <i className="fas fa-industry text-4xl text-teal-600 mb-4"></i>
-                <p className="text-lg sm:text-xl font-bold mb-2 text-gray-800">Factory & Equipment</p>
+                <p className="text-lg sm:text-xl font-bold mb-2 text-gray-800">
+                  Factory & Equipment
+                </p>
                 <p className="text-gray-600 text-sm sm:text-base mb-4">
-                  Explore our state-of-the-art factory equipped with advanced equipments and precision tools for industrial manufacturing.
+                  Explore our state-of-the-art factory equipped with advanced
+                  equipments and precision tools for industrial manufacturing.
                 </p>
                 <span className="text-teal-600 font-semibold group-hover:translate-x-2 inline-block transition duration-300">
                   Learn More <i className="fas fa-arrow-right ml-2"></i>
@@ -158,9 +187,13 @@ const Homepage = () => {
             <Link to="/products" className="group">
               <div className="bg-white p-6 sm:p-8 rounded-xl hover:shadow-lg transition duration-300 group-hover:scale-105">
                 <i className="fas fa-boxes text-4xl text-teal-600 mb-4"></i>
-                <p className="text-lg sm:text-xl font-bold mb-2 text-gray-800">Products & Components</p>
+                <p className="text-lg sm:text-xl font-bold mb-2 text-gray-800">
+                  Products & Components
+                </p>
                 <p className="text-gray-600 text-sm sm:text-base mb-4">
-                  Browse our industrial products, precision components, and custom-built assemblies designed for durability and performance.
+                  Browse our industrial products, precision components, and
+                  custom-built assemblies designed for durability and
+                  performance.
                 </p>
                 <span className="text-teal-600 font-semibold group-hover:translate-x-2 inline-block transition duration-300">
                   View Products <i className="fas fa-arrow-right ml-2"></i>
@@ -171,12 +204,16 @@ const Homepage = () => {
             <Link to="/certifications" className="group">
               <div className="bg-white p-6 sm:p-8 rounded-xl hover:shadow-lg transition duration-300 group-hover:scale-105">
                 <i className="fas fa-certificate text-4xl text-teal-600 mb-4"></i>
-                <p className="text-lg sm:text-xl font-bold mb-2 text-gray-800">Quality Certifications</p>
+                <p className="text-lg sm:text-xl font-bold mb-2 text-gray-800">
+                  Quality Certifications
+                </p>
                 <p className="text-gray-600 text-sm sm:text-base mb-4">
-                  We are  ISO certified with  industry approvals, and quality assurance standards that guarantee excellence.
+                  We are ISO certified with industry approvals, and quality
+                  assurance standards that guarantee excellence.
                 </p>
                 <span className="text-teal-600 font-semibold group-hover:translate-x-2 inline-block transition duration-300">
-                  View Certifications <i className="fas fa-arrow-right ml-2"></i>
+                  View Certifications{" "}
+                  <i className="fas fa-arrow-right ml-2"></i>
                 </span>
               </div>
             </Link>
@@ -187,9 +224,12 @@ const Homepage = () => {
       {/* Contact CTA Section */}
       <section className="py-12 md:py-20 bg-gray-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-6 sm:mb-8">Ready to Start Your Project?</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-6 sm:mb-8">
+            Ready to Start Your Project?
+          </h2>
           <p className="text-lg sm:text-xl mb-6 max-w-2xl mx-auto mt-2">
-            Connect with our expert team today to discuss your project needs, request a custom quote, or schedule a plant visit.
+            Connect with our expert team today to discuss your project needs,
+            request a custom quote, or schedule a plant visit.
           </p>
 
           {/* buttons stack on mobile, inline on sm+ */}
@@ -212,6 +252,7 @@ const Homepage = () => {
         </div>
       </section>
     </div>
+
   );
 };
 

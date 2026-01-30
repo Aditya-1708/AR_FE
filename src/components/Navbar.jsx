@@ -60,6 +60,10 @@ const NAV_ITEMS = [
       { label: "Apply Now", to: "/career#application-form" },
     ],
   },
+  {
+    label: "Admin",
+    to: "/admin",
+  },
 ];
 
 const Navbar = () => {
@@ -86,14 +90,16 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed w-full top-0 z-50 bg-white text-black shadow-xl font-inter">
-      <div className="container mx-auto px-4 sm:px-6 md:px-8 flex flex-wrap justify-between items-center h-auto md:h-20 py-3 md:py-0">
-
+    <nav className="fixed top-0 w-full h-16 z-50 bg-white text-black shadow-xl">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 flex flex-wrap justify-between items-center h-auto py-3 md:py-0">
         {/* Logo */}
-       <Link to="/" className="flex items-center space-x-3 mb-4 md:mb-0">
-  <img src="/AR logo.png" alt="AR Industries Logo" className="h-12 md:h-14" />
-</Link>
-
+        <Link to="/" className="flex items-center space-x-3 mb-4 md:mb-0">
+          <img
+            src="/AR logo.png"
+            alt="AR Industries Logo"
+            className="h-12 md:h-14"
+          />
+        </Link>
 
         {/* Nav Items */}
         <div className="flex flex-wrap justify-center md:justify-end items-center gap-4 md:space-x-8 text-sm md:text-base font-medium w-full md:w-auto">
@@ -139,21 +145,20 @@ const Navbar = () => {
 
         {/* Contact Button */}
         <div className="mt-3 md:mt-0 w-full md:w-auto flex justify-center md:justify-end">
-  <Link
-    to="/contact"
-    className="flex items-center space-x-2 
+          <Link
+            to="/contact"
+            className="flex items-center space-x-2 
                border-2 border-black 
                text-black 
                py-2 px-6 rounded-lg 
                text-sm md:text-base font-semibold 
                hover:bg-gray-200 hover:text-black
                transition-all duration-300 font-inter"
-  >
-    <span>Contact Us</span>
-    <FaArrowRight className="text-black" />
-  </Link>
-</div>
-
+          >
+            <span>Contact Us</span>
+            <FaArrowRight className="text-black" />
+          </Link>
+        </div>
       </div>
     </nav>
   );

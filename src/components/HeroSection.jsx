@@ -1,176 +1,69 @@
-import { useEffect, useRef, useState } from 'react';
-import { FaArrowRight, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-
-const slides = [
-  {
-    headline: 'View Full Story',
-    subheading:'',
-    buttonText: 'View on YouTube',
-    link: 'https://www.youtube.com',
-    backgroundImage: null,
-    isVideo: true,
-  },
-  {
-    headline: 'Engineering Excellence<br/>in Metal Fabrication',
-    subheading:
-      'Precision metal fabrication and industrial-grade components built with uncompromising quality.',
-    buttonText: 'Explore Products',
-    link: '/products',
-    backgroundImage: '/1.jpg',
-  },
-  {
-    headline: 'Precision Manufacturing<br/>Advanced Technology',
-    subheading:
-      'State-of-the-art CNC equipment and strict quality control ensure accuracy in every part.',
-    buttonText: 'Explore Products',
-    link: '/products',
-    backgroundImage: '/2.jpg',
-  },
-  {
-    headline: 'Custom Solutions<br/>Tailored for You',
-    subheading:
-      'Bespoke fabrication solutions engineered to meet your exact specifications.',
-    buttonText: 'Contact Us',
-    link: '/contact',
-    backgroundImage: '/3.jpg',
-  },
-];
+import { Link } from "react-router-dom";
+import { FaArrowRight } from "react-icons/fa";
+import HeroVideo from "./HeroVideo";
 
 const HeroSection = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [direction, setDirection] = useState('next');
-  const [ctaAnimate, setCtaAnimate] = useState(false);
-
-  const autoSlideRef = useRef(null);
-
-  const startAutoSlide = () => {
-    stopAutoSlide();
-    autoSlideRef.current = setInterval(() => {
-      setDirection('next');
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, currentSlide === 0 ? 22000 : 6000);
-  };
-
-  const stopAutoSlide = () => {
-    if (autoSlideRef.current) clearInterval(autoSlideRef.current);
-  };
-
-  useEffect(() => {
-    startAutoSlide();
-    return stopAutoSlide;
-  }, [currentSlide]);
-
-  const goNext = () => {
-    stopAutoSlide();
-    setDirection('next');
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-
-  const goPrev = () => {
-    stopAutoSlide();
-    setDirection('prev');
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
-
-  const goToSlide = (index) => {
-    stopAutoSlide();
-    setDirection(index > currentSlide ? 'next' : 'prev');
-    setCurrentSlide(index);
-  };
-
-  const slide = slides[currentSlide];
-useEffect(() => {
-  setCtaAnimate(false);
-}, [currentSlide]);
-
   return (
-    <section className="relative h-screen overflow-hidden text-white">
-      {/* Background */}
-      {slide.isVideo ? (
-        <div className="absolute inset-0">
-          <video
-            className="w-full h-full object-cover"
-            src="/AR Industries Teaser002.mp4"
-            autoPlay
-            muted
-            playsInline
-            onEnded={()=>setCtaAnimate(true)}
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/20" />
-        </div>
-      ) : (
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
-          style={{ backgroundImage: `url(${slide.backgroundImage})` }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30" />
-        </div>
-      )}
-
-      {/* Content */}
+    <section className="relative overflow-hidden min-h-[calc(100vh-4rem)] pt-16">
+      {/* ===== BACKGROUND IMAGE ===== */}
       <div
-        key={currentSlide}
-        className={`relative z-10 h-full flex items-center container mx-auto px-6
-        ${direction === 'next' ? 'animate-slide-in-right' : 'animate-slide-in-left'}
-        `}
-      >
-        <div className="max-w-3xl">
-          <h1
-            className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight mb-6"
-            dangerouslySetInnerHTML={{ __html: slide.headline }}
-          />
-          <p className="text-lg sm:text-xl text-gray-200 mb-10 max-w-2xl">
-            {slide.subheading}
-          </p>
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: "url('/Hero.webp')" }}
+      />
 
-          <Link
-  to={slide.link}
-  className={`relative inline-flex items-center gap-3 px-8 py-4 rounded-lg 
-    font-semibold text-lg border-2 overflow-hidden
-    transition-colors duration-300
-    ${
-      ctaAnimate
-        ? 'btn-fill-active text-white border-red-600'
-        : 'bg-white text-red-600 border-red-600'
-    }
-  `}
->
-  <span className="relative z-10 flex items-center gap-3">
-    {slide.buttonText}
-    <FaArrowRight />
-  </span>
-</Link>
+      {/* ===== NEUTRAL OVERLAY ===== */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
 
+      {/* ===== CONTENT ===== */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-16">
+        <div className="grid lg:grid-cols-2 gap-10 items-center text-white">
+          {/* LEFT */}
+          <div>
+            <span className="inline-block mb-4 rounded-full bg-amber-400/15 px-3 py-1 text-xs font-semibold text-amber-300 tracking-wide">
+              Precision Manufacturing
+            </span>
+
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">
+              Engineering Excellence
+              <span className="block text-slate-200">in Metal Fabrication</span>
+            </h1>
+
+            <p className="mt-4 text-base sm:text-lg text-slate-200 max-w-lg">
+              High-precision industrial fabrication powered by advanced CNC
+              technology and uncompromising quality standards.
+            </p>
+
+            <div className="mt-6 flex gap-3">
+              <Link
+                to="/products"
+                className="inline-flex items-center gap-2 rounded-lg
+                           bg-slate-900 px-6 py-3 text-sm font-semibold
+                           hover:bg-slate-800 transition shadow-lg"
+              >
+                Explore Products
+                <FaArrowRight />
+              </Link>
+
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 rounded-lg
+                           border border-white/30 px-6 py-3 text-sm font-semibold
+                           hover:bg-white/10 transition backdrop-blur"
+              >
+                Contact Us
+              </Link>
+            </div>
+          </div>
+
+          {/* RIGHT MEDIA */}
+          <div
+            className="relative aspect-video rounded-2xl overflow-hidden
+                          bg-black/50 backdrop-blur shadow-xl
+                          border border-white/10"
+          >
+            <HeroVideo />
+          </div>
         </div>
-      </div>
-
-      {/* Arrows */}
-      <button
-        onClick={goPrev}
-        className="absolute left-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/40 hover:bg-black/60 transition"
-      >
-        <FaChevronLeft />
-      </button>
-
-      <button
-        onClick={goNext}
-        className="absolute right-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/40 hover:bg-black/60 transition"
-      >
-        <FaChevronRight />
-      </button>
-
-      {/* Dots */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-20">
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => goToSlide(index)}
-            className={`h-3 w-3 rounded-full transition
-              ${index === currentSlide ? 'bg-white' : 'bg-white/40'}
-            `}
-          />
-        ))}
       </div>
     </section>
   );
