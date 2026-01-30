@@ -1,60 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import  { useState, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axiosInstance from '../axios';
 
-// --- MOCK DATA ---
-const MOCKED_JOBS_DATA = [
-  {
-    id: 'sre001',
-    title: 'Site Reliability Engineer (SRE)',
-    department: 'Cloud Operations',
-    location: 'Bengaluru, India',
-    description: 'Design, implement, and maintain highly available and scalable systems. Focus on automation, monitoring, and incident response for production environments.',
-    requirements: [
-      '5+ years experience in a high-volume production environment.',
-      'Expertise in Kubernetes, AWS/GCP, and CI/CD pipelines.',
-      'Strong background in Python or Go.',
-      'Experience with observability tools (Prometheus, Grafana, ELK).'
-    ]
-  },
-  {
-    id: 'pm002',
-    title: 'Senior Product Manager',
-    department: 'Digital Innovation',
-    location: 'Remote (US/EU)',
-    description: 'Lead the roadmap and strategy for our next-generation AI platform. Define user stories, collaborate with engineering, and drive business outcomes.',
-    requirements: [
-      '7+ years in product management, preferably in B2B SaaS or AI.',
-      'Proven ability to translate technical concepts into market strategy.',
-      'Excellent communication and stakeholder management skills.',
-      'Bachelor’s degree in business, engineering, or a related field.'
-    ]
-  },
-  {
-    id: 'data003',
-    title: 'Data Scientist - Generative AI',
-    department: 'R&D Lab',
-    location: 'San Francisco, USA',
-    description: 'Develop and train cutting-edge generative models. Research new techniques in NLP and image generation to enhance our product suite.',
-    requirements: [
-      'PhD or Master’s in Computer Science, Statistics, or related quantitative field.',
-      'Deep expertise in PyTorch/TensorFlow and transformer architectures.',
-      'Published research or contributions to major open-source projects.',
-      'Proficiency in MLOps and cloud computing environments.'
-    ]
-  },
-  {
-    id: 'design004',
-    title: 'UX/UI Designer',
-    department: 'Product Design',
-    location: 'London, UK',
-    description: 'Craft intuitive and beautiful interfaces for our web and mobile applications. Work closely with product managers and front-end developers.',
-    requirements: [
-      '3+ years of professional UX/UI design experience.',
-      'Mastery of Figma or Sketch.',
-      'Strong portfolio demonstrating design thinking and problem-solving.',
-      'Experience with accessibility standards (WCAG).'
-    ]
-  }
-];
 
 // EXPANDED AND MORE INFORMATIVE CULTURE POINTS
 const CULTURE_POINTS = [
@@ -136,16 +83,9 @@ const getIcon = (name, props) => {
 // --- MAIN APPLICATION COMPONENT ---
 const App = () => {
   const [selectedJob, setSelectedJob] = useState(null);
-  const [submissionStatus, setSubmissionStatus] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [applicationFormData, setApplicationFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    jobRole: MOCKED_JOBS_DATA[0].title, // Default to first job
-    statement: '',
-  });
-
+  const[jobs,setJobs]=useState([]);
+  const navigate=useNavigate();
   // Handle smooth scroll for internal links
   const handleSmoothScroll = useCallback((e, hash) => {
     e.preventDefault();
@@ -154,37 +94,20 @@ const App = () => {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }, []);
-
-  // Update form data state
-  const handleFormChange = (e) => {
-    const { name, value } = e.target;
-    setApplicationFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  // Handle form submission (mock)
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmissionStatus('loading');
-
-    // Simulate API call delay
-    setTimeout(() => {
-      console.log('Application Submitted:', applicationFormData);
-      setSubmissionStatus('success');
-      setApplicationFormData({
-        name: '',
-        email: '',
-        phone: '',
-        jobRole: MOCKED_JOBS_DATA[0].title,
-        statement: '',
-      });
-      // Scroll to the application form section to show the success message
-      const element = document.getElementById('application-form');
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  useEffect(()=>{
+    const fetchJobs=async()=>{
+      try{
+        const response=await axiosInstance.get("/openings");
+      if(response){
+        setJobs(response.data.jobs);
       }
-    }, 1500);
-  };
-
+      }
+      catch(err){
+        console.log(err);
+      }
+    }
+    fetchJobs();
+  },[])
   // Open the job details modal and set the selected job
   const openJobModal = (job) => {
     setSelectedJob(job);
@@ -305,19 +228,17 @@ const App = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {MOCKED_JOBS_DATA.map((job) => (
+            {(jobs.map((job) => (
               <div
                 key={job.id}
                 className="bg-white p-6 rounded-xl shadow-md border border-gray-200 hover:shadow-xl hover:border-teal-500 transition cursor-pointer flex flex-col justify-between h-full"
                 onClick={() => openJobModal(job)}
               >
                 <div>
-                  <p className="text-sm font-semibold uppercase text-blue-700 mb-1">{job.department}</p>
                   <p className="text-2xl font-bold text-gray-800 mb-2 leading-snug">{job.title}</p>
                 </div>
                 <div>
                     <div className="border-t border-gray-100 pt-4 mt-4 text-sm text-gray-500">
-                      <p className="mb-1">📍 {job.location}</p>
                       <p className="font-medium text-indigo-600 mt-2 flex items-center">
                           View Details 
                           <ArrowRight className="w-4 h-4 ml-1"/>
@@ -325,7 +246,7 @@ const App = () => {
                     </div>
                 </div>
               </div>
-            ))}
+            )))}
           </div>
         </div>
       </section>
@@ -344,26 +265,17 @@ const App = () => {
             <p className="text-3xl font-extrabold text-indigo-900 mb-2">
               {selectedJob.title}
             </p>
-            <div className="text-sm text-teal-600 font-semibold mb-6 space-x-4">
-                <span>{selectedJob.department}</span>
-                <span>|</span>
-                <span>{selectedJob.location}</span>
-            </div>
-
             <p className='text-xl font-bold text-gray-800 mb-2'>Description</p>
             <p className="text-gray-700 mb-6 border-l-4 border-blue-500 pl-3">{selectedJob.description}</p>
             
             <p className='text-xl font-bold text-gray-800 mb-2'>Requirements</p>
             <ul className="list-disc list-outside text-gray-600 space-y-2 ml-5 mb-8">
-              {selectedJob.requirements.map((req, i) => (
-                <li key={i} className='text-sm'>{req}</li>
-              ))}
+              {selectedJob.requirements}
             </ul>
             <a
-              href="#application-form"
               onClick={(e) => {
                 closeJobModal(); // Close modal upon clicking apply
-                handleSmoothScroll(e, '#application-form');
+                navigate(`/application/${selectedJob.id}`)
               }}
               className="w-full text-center inline-block bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-800 transition transform hover:scale-[1.01] shadow-lg"
             >
@@ -374,159 +286,7 @@ const App = () => {
       )}
 
       {/* Application Form */}
-      <section
-        id="application-form"
-        className="py-24  flex justify-center items-center"
-      >
-        <div className="container mx-auto px-4 max-w-4xl">
-          <div className="bg-white shadow-2xl p-8 md:p-12 rounded-2xl">
-            {/* Heading and Status */}
-            <p className="text-4xl font-extrabold text-indigo-900 text-center mb-4">
-              Submit Your Application
-            </p>
-            <p className="text-gray-600 text-center mb-10">
-              Secure your place in the future. We look forward to reviewing your profile.
-            </p>
-
-            {/* Submission Status Message */}
-            {submissionStatus === 'loading' && (
-                <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-6 rounded-lg font-semibold" role="alert">
-                    Processing your application...
-                </div>
-            )}
-            {submissionStatus === 'success' && (
-                <div className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6 rounded-lg font-semibold" role="alert">
-                    Thank you! Your application has been successfully submitted. We will be in touch soon.
-                </div>
-            )}
-
-            {/* Form */}
-            <form className="space-y-6" onSubmit={handleSubmit}>
-              
-              <div className="grid md:grid-cols-2 gap-6">
-                {/* Full Name */}
-                <div className="text-left">
-                  <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-1">
-                    Full Name
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    value={applicationFormData.name}
-                    onChange={handleFormChange}
-                    placeholder="Jane Doe"
-                    className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors"
-                    required
-                  />
-                </div>
-
-                {/* Email Address */}
-                <div className="text-left">
-                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-1">
-                    Email Address
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={applicationFormData.email}
-                    onChange={handleFormChange}
-                    placeholder="jane@example.com"
-                    className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                {/* Phone Number */}
-                <div className="text-left">
-                  <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-1">
-                    Phone Number
-                  </label>
-                  <input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    value={applicationFormData.phone}
-                    onChange={handleFormChange}
-                    placeholder="(555) 123-4567"
-                    className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors"
-                  />
-                </div>
-
-                {/* Select Job Role */}
-                <div className="text-left">
-                  <label htmlFor="jobRole" className="block text-sm font-semibold text-gray-700 mb-1">
-                    Select Job Role
-                  </label>
-                  <select 
-                    id="jobRole"
-                    name="jobRole"
-                    value={applicationFormData.jobRole}
-                    onChange={handleFormChange}
-                    className="w-full border border-gray-300 px-4 py-3 rounded-lg text-black focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors bg-white"
-                    required
-                  >
-                    {MOCKED_JOBS_DATA.map((job) => (
-                      <option key={job.id} value={job.title}>
-                        {job.title}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              {/* Statement */}
-              <div className="text-left">
-                <label htmlFor="statement" className="block text-sm font-semibold text-gray-700 mb-1">
-                  Why should we hire you?
-                </label>
-                <textarea
-  id="statement"
-  name="statement"
-  value={applicationFormData.statement}
-  onChange={handleFormChange}
-  placeholder="Write a short statement about your vision, experience, and what makes you a great fit."
-  rows="4"
-  className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors text-gray-900"
-></textarea>
-
-              </div>
-
-              {/* Upload Resume */}
-              <div className="text-left">
-                <label htmlFor="resume" className="block text-sm font-semibold text-gray-700 mb-1">
-                  Upload Resume (.pdf, .doc, .docx)
-                </label>
-                <input
-                  id="resume"
-                  name="resume"
-                  type="file"
-                  className="w-full border border-gray-300 px-4 py-3 rounded-lg cursor-pointer bg-gray-50 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-700 file:text- hover:file:bg-blue-800 transition-colors"
-                  accept=".pdf,.doc,.docx"
-                  required
-                />
-              </div>
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={submissionStatus === 'loading'}
-                className={`w-full text-white py-3 rounded-xl font-bold text-lg shadow-xl transition-all duration-300 ${
-                    submissionStatus === 'loading'
-                    ? 'bg-gray-400 cursor-not-allowed'
-                    : 'bg-indigo-600 hover:bg-indigo-700 transform hover:scale-[1.005]'
-                }`}
-              >
-                {submissionStatus === 'loading' ? 'Submitting...' : 'Submit Application'}
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
-
+      
       {/* Footer (Simple Placeholder) */}
       {/* <footer className="bg-gray-900 text-center py-6 text-gray-400 text-sm">
         &copy; 2025 AR Industries. All rights reserved.
