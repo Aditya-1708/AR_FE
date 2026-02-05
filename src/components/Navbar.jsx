@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FaAngleDown, FaArrowRight } from "react-icons/fa";
+import axiosInstance from "../axios";
 
 const NAV_ITEMS = [
   {
@@ -60,16 +61,28 @@ const NAV_ITEMS = [
       { label: "Apply Now", to: "/career#application-form" },
     ],
   },
-  {
-    label: "Admin",
-    to: "/admin",
-  },
 ];
-
 const Navbar = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
-  const navigate = useNavigate();
+  const [isAdmin, setIsAdmin] = useState(false);
+
   const location = useLocation();
+
+  useEffect(() => {
+    const checkAdmin = async () => {
+      try {
+        const res = await axiosInstance.get("/admins/me");
+        if (res.data.success) {
+          setIsAdmin(true);
+        }
+      } catch {
+        setIsAdmin(false);
+      }
+    };
+
+    checkAdmin();
+  }, []);
 
   useEffect(() => {
     const hash = location.hash;
@@ -84,54 +97,48 @@ const Navbar = () => {
     }
   }, [location]);
 
-  const handleDropdownClick = (label, to) => {
-    setOpenDropdown((prev) => (prev === label ? null : label));
-    navigate(to);
-  };
+  // Add admin item dynamically
+  const navItems = isAdmin
+    ? [...NAV_ITEMS, { label: "Admin", to: "/admin" }]
+    : NAV_ITEMS;
 
   return (
-    <nav className="fixed top-0 w-full h-16 z-50 bg-white text-black shadow-xl">
-      <div className="container mx-auto px-4 sm:px-6 md:px-8 flex flex-wrap justify-between items-center h-auto py-3 md:py-0">
-        {/* Logo */}
-        <Link to="/" className="flex items-center space-x-3 mb-4 md:mb-0">
-          <img
-            src="/AR logo.png"
-            alt="AR Industries Logo"
-            className="h-12 md:h-14"
-          />
+    <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200">
+      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        {/* LOGO */}
+        <Link to="/" className="flex items-center">
+          <img src="/AR logo.png" alt="AR Industries Logo" className="h-10" />
         </Link>
 
-        {/* Nav Items */}
-        <div className="flex flex-wrap justify-center md:justify-end items-center gap-4 md:space-x-8 text-sm md:text-base font-medium w-full md:w-auto">
-          {NAV_ITEMS.map((item) => (
-            <div key={item.label} className="relative">
-              <button
-                onClick={() => handleDropdownClick(item.label, item.to)}
-                className="flex items-center hover:text-[#3A3A8C] transition space-x-1 font-inter focus:outline-none"
-              >
-                <span>{item.label}</span>
-                {item.dropdown && (
-                  <FaAngleDown
-                    className={
-                      "ml-1 transition" +
-                      (openDropdown === item.label ? " rotate-180" : "")
-                    }
-                  />
-                )}
-              </button>
+        {/* DESKTOP NAV */}
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-800">
+          {navItems.map((item) => (
+            <div key={item.label} className="relative group">
+              <Link to={item.to} className="hover:text-[#393185] transition">
+                {item.label}
+              </Link>
 
-              {openDropdown === item.label && item.dropdown && (
+              {item.dropdown && (
                 <div
-                  className="absolute top-full left-0 mt-2 min-w-[180px] bg-white text-[#222222] rounded-lg shadow-lg overflow-hidden z-50"
-                  onMouseLeave={() => setOpenDropdown(null)}
+                  className="
+                    absolute left-0 top-full mt-3 w-56
+                    bg-white rounded-xl shadow-lg border
+                    opacity-0 invisible
+                    group-hover:opacity-100 group-hover:visible
+                    transition-all duration-200
+                  "
                 >
-                  <div className="py-3 px-4 grid grid-cols-1 gap-1">
+                  <div className="py-2">
                     {item.dropdown.map((menu) => (
                       <Link
                         key={menu.label}
                         to={menu.to}
-                        onClick={() => setOpenDropdown(null)}
-                        className="block py-2 px-2 hover:bg-[#F3F4F6] hover:text-[#3A3A8C] rounded font-inter"
+                        className="
+                          block px-5 py-2 text-sm
+                          text-gray-700
+                          hover:bg-gray-100
+                          hover:text-[#393185]
+                        "
                       >
                         {menu.label}
                       </Link>
@@ -143,23 +150,94 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* Contact Button */}
-        <div className="mt-3 md:mt-0 w-full md:w-auto flex justify-center md:justify-end">
-          <Link
-            to="/contact"
-            className="flex items-center space-x-2 
-               border-2 border-black 
-               text-black 
-               py-2 px-6 rounded-lg 
-               text-sm md:text-base font-semibold 
-               hover:bg-gray-200 hover:text-black
-               transition-all duration-300 font-inter"
-          >
-            <span>Contact Us</span>
-            <FaArrowRight className="text-black" />
-          </Link>
-        </div>
+        {/* DESKTOP CTA */}
+        <Link
+          to="/contact"
+          className="
+            hidden md:inline-flex items-center
+            bg-[#393185] text-white px-5 py-2
+            rounded-lg text-sm font-semibold
+            hover:bg-[#2f296f] transition
+          "
+        >
+          Contact Us
+        </Link>
+
+        {/* MOBILE TOGGLE */}
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="md:hidden text-2xl text-gray-800"
+          aria-label="Toggle navigation"
+        >
+          ☰
+        </button>
       </div>
+
+      {/* MOBILE MENU */}
+      {/* MOBILE MENU */}
+      {mobileOpen && (
+        <div className="md:hidden bg-white border-t border-gray-200">
+          <div className="px-6 py-4 space-y-3 text-sm font-medium text-gray-800">
+            {navItems.map((item) => (
+              <div key={item.label}>
+                <button
+                  className="w-full flex justify-between items-center py-2"
+                  onClick={() => {
+                    if (item.dropdown) {
+                      setOpenDropdown(
+                        openDropdown === item.label ? null : item.label,
+                      );
+                    } else {
+                      navigate(item.to); // ✅ NAVIGATE
+                      setMobileOpen(false); // ✅ CLOSE MENU
+                      setOpenDropdown(null);
+                    }
+                  }}
+                >
+                  <span>{item.label}</span>
+                  {item.dropdown && <FaAngleDown />}
+                </button>
+
+                {/* DROPDOWN */}
+                {item.dropdown && openDropdown === item.label && (
+                  <div className="pl-4 mt-2 space-y-2">
+                    {item.dropdown.map((menu) => (
+                      <Link
+                        key={menu.label}
+                        to={menu.to}
+                        onClick={() => {
+                          setMobileOpen(false);
+                          setOpenDropdown(null);
+                        }}
+                        className="block py-1 text-gray-600 hover:text-[#393185]"
+                      >
+                        {menu.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+
+            {/* MOBILE CTA */}
+            <Link
+              to="/contact"
+              onClick={() => {
+                setMobileOpen(false);
+                setOpenDropdown(null);
+              }}
+              className="
+          block mt-4 text-center
+          bg-[#393185] text-white py-2
+          rounded-lg font-semibold
+          hover:bg-[#2f296f] transition
+        "
+            >
+              Contact Us
+            </Link>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

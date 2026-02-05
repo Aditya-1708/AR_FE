@@ -1,8 +1,23 @@
-import React from "react";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import axiosInstance from "../axios";
 import Timeline from "../components/Timeline";
-
 const AboutUs = () => {
+  const [staff, setStaff] = useState([]);
+
+  useEffect(() => {
+    const fetchStaff = async () => {
+      try {
+        const response = await axiosInstance.get("/staff");
+        setStaff(response.data);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+
+    fetchStaff();
+  }, []);
+
   return (
     <div className="min-h-screen pt-20">
       {/* Header */}
@@ -18,7 +33,9 @@ const AboutUs = () => {
             About Us
           </p>
           <p className="text-lg text-gray-200 leading-relaxed px-10">
-            With a team of skilled professionals, we have excelled in fabrication within a short span of time and established ourselves as specialists in custom fabrication components and tailored solutions.
+            With a team of skilled professionals, we have excelled in
+            fabrication within a short span of time and established ourselves as
+            specialists in custom fabrication components and tailored solutions.
           </p>
         </motion.div>
       </section>
@@ -124,36 +141,50 @@ const AboutUs = () => {
           <p className="text-4xl font-bold text-blue-900 mb-6">
             Staffs & Authorities
           </p>
-         <p className="text-xl text-gray-700 max-w-3xl mx-auto text-center leading-relaxed">
-  Our strength lies in a dedicated leadership team and skilled workforce
-  driving excellence across all operations.
-</p>
-
-
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto text-center leading-relaxed">
+            Our strength lies in a dedicated leadership team and skilled
+            workforce driving excellence across all operations.
+          </p>
         </div>
 
-        <div className="container mx-auto px-6 grid md:grid-cols-3 gap-10">
-          {[
-            { name: "Mr. Umesh Patil", role: "Managing Director" },
-            { name: "Production Head", role: "Manufacturing & Operations" },
-            { name: "Quality Manager", role: "Quality Assurance" },
-            { name: "Design Engineer", role: "Fabrication Design" },
-            { name: "Site Supervisor", role: "Project Execution" },
-            { name: "Skilled Workforce", role: "Fabrication & Assembly" },
-          ].map((person, index) => (
+        <div className="container mx-auto px-6 grid gap-10 sm:grid-cols-2 md:grid-cols-3">
+          {staff.map((staff, index) => (
             <motion.div
-              key={index}
-              className="bg-gray-50 p-8 rounded-lg shadow-lg hover:shadow-xl transition text-center"
+              key={staff.id ?? index}
+              className="
+        group bg-white rounded-2xl p-8 text-center
+        shadow-md hover:shadow-2xl
+        transition-all duration-300
+        hover:-translate-y-2
+      "
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-blue-100 flex items-center justify-center">
-                <i className="fas fa-user-tie text-3xl text-blue-700"></i>
+              {/* IMAGE */}
+              <div className="relative w-32 h-32 mx-auto mb-6">
+                <img
+                  src={`${import.meta.env.VITE_BACKEND_URL}/uploads/staff/${staff.image}`}
+                  alt={staff.name}
+                  className="
+      w-full h-full rounded-full object-cover
+      ring-4 ring-[#393185]      transition-transform duration-300
+      group-hover:scale-110
+    "
+                  loading="lazy"
+                />
               </div>
-              <p className="text-xl font-bold text-blue-800">{person.name}</p>
-              <p className="text-gray-600 mt-2">{person.role}</p>
+
+              {/* NAME */}
+              <p className="text-lg font-semibold text-gray-900">
+                {staff.name}
+              </p>
+
+              {/* ROLE */}
+              <p className="text-sm text-blue-600 font-medium mt-1">
+                {staff.role}
+              </p>
             </motion.div>
           ))}
         </div>

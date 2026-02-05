@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 
 const StatsCounter = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
   const stats = [
-    { number: 3, label: 'Years Experience', suffix: '+' },
-    { number: 200, label: 'Orders Completed', suffix: '+' },
-    { number: 100, label: 'Team Members', suffix: '+' },
-    { number: 24, label: 'Hour Support', suffix: '/7' }
+    { number: 3, label: "Years Experience", suffix: "+" },
+    { number: 200, label: "Orders Completed", suffix: "+" },
+    { number: 100, label: "Team Members", suffix: "+" },
+    { number: 24, label: "Hour Support", suffix: "/7" },
   ];
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const StatsCounter = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     if (sectionRef.current) {
@@ -28,7 +28,7 @@ const StatsCounter = () => {
     return () => observer.disconnect();
   }, []);
 
-  const AnimatedNumber = ({ targetNumber, isVisible, suffix = '' }) => {
+  const AnimatedNumber = ({ targetNumber, isVisible, suffix = "" }) => {
     const [currentNumber, setCurrentNumber] = useState(0);
 
     useEffect(() => {
@@ -61,15 +61,18 @@ const StatsCounter = () => {
   };
 
   return (
-    <section ref={sectionRef} className="py-16 bg-blue-600">
+    <section ref={sectionRef} className="py-16 bg-[#393185]">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
           {stats.map((stat, index) => (
-            <div key={index} className="transform hover:scale-105 transition duration-300">
+            <div
+              key={index}
+              className="transform hover:scale-105 transition duration-300"
+            >
               <div className="text-4xl font-bold mb-2">
-                <AnimatedNumber 
-                  targetNumber={stat.number} 
-                  isVisible={isVisible} 
+                <AnimatedNumber
+                  targetNumber={stat.number}
+                  isVisible={isVisible}
                   suffix={stat.suffix}
                 />
               </div>

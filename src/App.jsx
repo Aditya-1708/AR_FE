@@ -1,11 +1,15 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 
 // Components
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
-import BackToTop from "./components/BackToTop";
 
 // Pages
 import Homepage from "./pages/Homepage";
@@ -18,6 +22,8 @@ import Career from "./pages/Career";
 import Contact from "./pages/Contact";
 import ApplicationForm from "./pages/ApplicationForm";
 import AdminPanel from "./pages/AdminPanel";
+import Signin from "./pages/Signin";
+import ProtectedRoute from "./components/ProtectedRoute";
 // Scroll to top or to element when route changes
 const ScrollToTopOrAnchor = () => {
   const location = useLocation();
@@ -59,8 +65,16 @@ function App() {
             <Route path="/certifications" element={<Certifications />} />
             <Route path="/career" element={<Career />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/application/:jobId" element={<ApplicationForm/>}/>
-            <Route path="/admin" element={<AdminPanel/>}/>
+            <Route path="/application/:jobId" element={<ApplicationForm />} />
+            <Route path="/signin" element={<Signin />} />
+            <Route
+              path="/admin"
+              element={
+                <ProtectedRoute>
+                  <AdminPanel />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </main>
 
@@ -76,4 +90,3 @@ function App() {
 }
 
 export default App;
-

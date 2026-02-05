@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import adminApi from "../axios";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const EMPTY_FORM = {
   products: { name: "", description: "" },
@@ -14,7 +15,7 @@ function AdminPanel() {
   const [editing, setEditing] = useState(null);
   const [form, setForm] = useState(EMPTY_FORM.products);
   const [file, setFile] = useState(null);
-
+  const navigate = useNavigate();
   /* ================= FETCH ================= */
 
   const fetchMap = {
@@ -30,6 +31,16 @@ function AdminPanel() {
       const res = await adminApi.get("/processes");
       setData(res.data);
     },
+  };
+
+
+  const logout = async () => {
+    try {
+      await adminApi.get("/admins/logout");
+      navigate("/signin");
+    } catch (err) {
+      console.error("Logout failed", err);
+    }
   };
 
   useEffect(() => {
@@ -363,6 +374,16 @@ function AdminPanel() {
       </section>
 
       <section className="pt-24 pb-16 bg-gray-50">
+        <div className="flex justify-between items-center max-w-7xl mx-auto px-6">
+          <h1 className="text-2xl font-bold">Admin Panel</h1>
+          <button
+            onClick={logout}
+            className="px-4 py-2 bg-red-600 text-white rounded-lg text-sm"
+          >
+            Logout
+          </button>
+        </div>
+
         <div className="max-w-7xl mx-auto px-6 space-y-8">
           {/* ===== HEADER ===== */}
           <div className="flex items-center justify-between">

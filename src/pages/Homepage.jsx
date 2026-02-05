@@ -13,18 +13,9 @@ import StatsCounter from "../components/StatsCounter";
 import ClientLogos from "../components/ClientLogos";
 
 const Homepage = () => {
-  // kept these variables (no visual changes)
-  const primaryColor = "teal";
-  const primaryColorDark = "teal-600";
-  const primaryColorLight = "teal-100";
-  const headingColor = "gray-800";
 
   return (
     <div className="min-h-screen bg-gray-100">
-      <div className="bg-red-500 text-white p-6 rounded-xl">
-        Tailwind v4 is working 🚀
-      </div>
-
       {/* Hero Section */}
       <HeroSection />
 
