@@ -1,29 +1,28 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import {
+  Route,
   BrowserRouter as Router,
   Routes,
-  Route,
   useLocation,
 } from "react-router-dom";
-
-// Components
-import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import WhatsAppButton from "./components/WhatsAppButton";
-
-// Pages
-import Homepage from "./pages/Homepage";
-import AboutUs from "./pages/AboutUs";
-import Factory from "./pages/Factory";
-import Products from "./pages/Products";
-import Clients from "./pages/Clients";
-import Certifications from "./pages/Certifications";
-import Career from "./pages/Career";
-import Contact from "./pages/Contact";
-import ApplicationForm from "./pages/ApplicationForm";
-import AdminPanel from "./pages/AdminPanel";
-import Signin from "./pages/Signin";
+import Navbar from "./components/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
+import WhatsAppButton from "./components/WhatsAppButton";
+import AboutUs from "./pages/AboutUs";
+import AdminPanel from "./pages/AdminPanel";
+import ApplicationForm from "./pages/ApplicationForm";
+import Blog from "./pages/Blog";
+import Blogs from "./pages/Blogs";
+import Career from "./pages/Career";
+import Certifications from "./pages/Certifications";
+import Clients from "./pages/Clients";
+import Contact from "./pages/Contact";
+import Factory from "./pages/Factory";
+import Homepage from "./pages/Homepage";
+import Job from "./pages/Job";
+import Products from "./pages/Products";
+import Signin from "./pages/Signin";
 // Scroll to top or to element when route changes
 const ScrollToTopOrAnchor = () => {
   const location = useLocation();
@@ -55,7 +54,7 @@ function App() {
         <ScrollToTopOrAnchor />
 
         {/* Main Content */}
-        <main className="flex-grow">
+        <main className="flex-grow pt-20">
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/about" element={<AboutUs />} />
@@ -65,8 +64,11 @@ function App() {
             <Route path="/certifications" element={<Certifications />} />
             <Route path="/career" element={<Career />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/jobs/:id" element={<Job></Job>} />
             <Route path="/application/:jobId" element={<ApplicationForm />} />
             <Route path="/signin" element={<Signin />} />
+            <Route path="/blogs" element={<Blogs />} />
+            <Route path="/blog/:id" element={<Blog />} />
             <Route
               path="/admin"
               element={

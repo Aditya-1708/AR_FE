@@ -1,94 +1,99 @@
-import React from 'react';
+
+import cementImg from "../assets/industries/cement.jpg";
+import constructionImg from "../assets/industries/construction.jpg";
+import heavyImg from "../assets/industries/heavy.jpg";
+import miningImg from "../assets/industries/mining.jpeg";
+import portImg from "../assets/industries/port.jpg";
+import powerImg from "../assets/industries/power.jpg";
 
 const ClientGrid = () => {
-  const clients = [
+  const industries = [
     {
       id: 1,
-      name: "ConstructCorp",
-      industry: "Construction",
-      icon: "fas fa-building",
-      description: "Leading construction company specializing in commercial and industrial projects."
+      name: "Construction & Infrastructure",
+      image: constructionImg,
+      description:
+        "Structural fabrication and heavy components for commercial, industrial, and infrastructure projects.",
     },
     {
       id: 2,
-      name: "ManuTech Inc",
-      industry: "Manufacturing",
-      icon: "fas fa-industry",
-      description: "Advanced manufacturing solutions for automotive and aerospace industries."
+      name: "Heavy Equipment",
+      image: heavyImg,
+      description:
+        "Precision fabrication for construction machinery, mining equipment, and industrial vehicles.",
     },
     {
       id: 3,
-      name: "Heavy Equipment Co",
-      industry: "Equipment",
-      icon: "fas fa-truck",
-      description: "Heavy machinery and equipment manufacturing for construction and mining."
+      name: "Mining & Material Handling",
+      image: miningImg,
+      description:
+        "Robust structural and conveying systems for mining, mineral processing, and bulk material handling.",
     },
     {
       id: 4,
-      name: "Energy Solutions",
-      industry: "Energy",
-      icon: "fas fa-bolt",
-      description: "Renewable energy infrastructure and power generation equipment."
+      name: "Energy & Power",
+      image: powerImg,
+      description:
+        "Fabricated components and structures for hydro, thermal, and renewable energy projects.",
     },
     {
       id: 5,
-      name: "Marine Works",
-      industry: "Marine",
-      icon: "fas fa-ship",
-      description: "Marine engineering and shipyard fabrication services."
+      name: "Cement & Process Plants",
+      image: cementImg,
+      description:
+        "Heavy-duty fabrication for cement plants, kilns, conveyors, and process equipment.",
     },
     {
       id: 6,
-      name: "Transport Systems",
-      industry: "Transportation",
-      icon: "fas fa-train",
-      description: "Railway and transportation infrastructure components."
+      name: "Ports & Marine Structures",
+      image: portImg,
+      description:
+        "Structural fabrication for port infrastructure, marine equipment, and coastal projects.",
     },
-    {
-      id: 7,
-      name: "AgriTech Solutions",
-      industry: "Agriculture",
-      icon: "fas fa-tractor",
-      description: "Agricultural equipment and farming technology solutions."
-    },
-    {
-      id: 8,
-      name: "Global Logistics",
-      industry: "Logistics",
-      icon: "fas fa-warehouse",
-      description: "Warehouse and logistics equipment manufacturing."
-    }
   ];
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-      {clients.map((client) => (
-        <div
-          key={client.id}
-          className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer group"
-        >
-          <div className="text-center">
-            {/* Client Icon */}
-            <div className="w-16 h-16 !bg-gray-100 group-hover:!bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 transition-colors duration-300">
-              <i className={`${client.icon} text-2xl !text-gray-600 group-hover:!text-blue-600 transition-colors duration-300`}></i>
+    <section className="py-16 bg-gray-50">
+      <div className="container mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {industries.map((industry) => (
+            <div
+              key={industry.id}
+              className="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col h-full"
+            >
+              {/* Industry Image */}
+              <div className="relative h-56 overflow-hidden">
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10"></div>
+                <img
+                  src={industry.image}
+                  alt={industry.name}
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="p-8 flex flex-col flex-grow">
+                <h3 className="text-xl font-bold text-[#393185] mb-3 group-hover:text-blue-700 transition-colors">
+                  {industry.name}
+                </h3>
+                <p className="text-gray-600 leading-relaxed flex-grow">
+                  {industry.description}
+                </p>
+                
+                <div className="mt-6 pt-6 border-t border-gray-100">
+                  <span className="text-sm font-semibold text-[#393185] flex items-center gap-2 group-hover:gap-3 transition-all">
+                    Explore Solutions 
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </span>
+                </div>
+              </div>
             </div>
-            
-            {/* Client Name */}
-            <h3 className="font-bold mb-2 text-sm !text-gray-900">{client.name}</h3>
-            
-            {/* Industry Badge */}
-            <span className="inline-block px-3 py-1 !bg-gray-200 group-hover:!bg-blue-200 !text-gray-700 group-hover:!text-blue-800 text-xs rounded-full mb-3 transition-colors duration-300">
-              {client.industry}
-            </span>
-            
-            {/* Description */}
-            <p className="text-xs leading-relaxed !text-gray-600">
-              {client.description}
-            </p>
-          </div>
+          ))}
         </div>
-      ))}
-    </div>
+      </div>
+    </section>
   );
 };
 

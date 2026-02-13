@@ -1,144 +1,169 @@
-import React from "react";
-import { Link } from "react-router-dom";
 import {
-  FaCogs,
-  FaShieldAlt,
   FaClock,
-  FaUsers,
+  FaCogs,
   FaHammer,
   FaHeadset,
+  FaShieldAlt,
+  FaUsers,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import ClientLogos from "../components/ClientLogos";
 import HeroSection from "../components/HeroSection";
 import StatsCounter from "../components/StatsCounter";
-import ClientLogos from "../components/ClientLogos";
 
 const Homepage = () => {
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-50 font-sans">
       {/* Hero Section */}
       <HeroSection />
 
       {/* Stats Section */}
-      <StatsCounter />
+      <div className="relative z-10 -mt-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+             <StatsCounter />
+        </div>
+      </div>
 
       {/* Client Logos Section */}
-      <ClientLogos />
+      <div className="py-12 bg-white border-b border-gray-100">
+          <ClientLogos />
+      </div>
 
       {/* Features Overview */}
-      <section className="py-12 md:py-20 bg-white">
+      <section className="py-20 md:py-28 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center text-center mb-8 md:mb-12">
-            <p className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-800 mb-3 sm:mb-4 tracking-tight leading-tight">
+          <div className="flex flex-col items-center text-center mb-16 md:mb-20">
+            <span className="text-[#393185] font-bold tracking-wider uppercase text-sm mb-3">Excellence in Engineering</span>
+            <p className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-6 tracking-tight">
               Why Choose Us?
             </p>
-            <p className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed mt-3 sm:mt-4">
+            <div className="h-1 w-24 bg-[#393185] rounded-full mb-6"></div>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               We are a growing and dynamic manufacturing organization dedicated
               to delivering excellence in precision metal fabrication and
               industrial engineering solutions.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
             {/* Precision Manufacturing Card */}
-            <div className="bg-white p-6 sm:p-8 rounded-xl shadow-lg transition duration-300 transform hover:scale-105 cursor-pointer group">
-              <div className="text-center">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-5 sm:mb-6 transition-all duration-300 group-hover:bg-blue-600">
-                  <FaCogs className="text-xl sm:text-2xl text-blue-800 transition-all duration-300 group-hover:text-white" />
+            <div className="bg-gray-50 p-8 rounded-2xl transition-all duration-300 hover:bg-white hover:shadow-2xl border border-transparent hover:border-gray-100 group">
+              <div className="flex flex-col items-start h-full">
+                <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:rotate-6">
+                  <FaCogs className="text-3xl text-blue-600" />
                 </div>
-                <p className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-800 transition-all duration-300 group-hover:text-blue-500">
+                <h3 className="text-2xl font-bold mb-4 text-gray-900 group-hover:text-blue-600 transition-colors">
                   Precision Manufacturing
-                </p>
-                <p className="text-gray-700 text-sm sm:text-base">
+                </h3>
+                <p className="text-gray-600 text-base leading-relaxed mb-6 flex-grow">
                   Utilizing advanced CNC machining and modern production
                   systems, we deliver highly accurate and reliable components
                   for industrial applications.
                 </p>
+                <div className="w-full h-1 bg-gray-200 rounded-full overflow-hidden">
+                    <div className="h-full bg-blue-600 w-0 group-hover:w-full transition-all duration-700 ease-out"></div>
+                </div>
               </div>
             </div>
 
             {/* Quality Assured Card */}
-            <div className="bg-white p-6 sm:p-8 rounded-xl shadow-lg transition duration-300 transform hover:scale-105 cursor-pointer group">
-              <div className="text-center">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-5 sm:mb-6 transition-all duration-300 group-hover:bg-green-600">
-                  <FaShieldAlt className="text-xl sm:text-2xl text-green-800 transition-all duration-300 group-hover:text-white" />
+            <div className="bg-gray-50 p-8 rounded-2xl transition-all duration-300 hover:bg-white hover:shadow-2xl border border-transparent hover:border-gray-100 group">
+              <div className="flex flex-col items-start h-full">
+                <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:rotate-6">
+                  <FaShieldAlt className="text-3xl text-green-600" />
                 </div>
-                <p className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-800 transition-all duration-300 group-hover:text-green-600">
+                <h3 className="text-2xl font-bold mb-4 text-gray-900 group-hover:text-green-600 transition-colors">
                   Quality Assured
-                </p>
-                <p className="text-gray-700 text-sm sm:text-base">
+                </h3>
+                <p className="text-gray-600 text-base leading-relaxed mb-6 flex-grow">
                   Certified under ISO 9001:2015, we maintain stringent quality
                   control processes and partner with third-party auditors for
                   guaranteed performance.
                 </p>
+                <div className="w-full h-1 bg-gray-200 rounded-full overflow-hidden">
+                    <div className="h-full bg-green-600 w-0 group-hover:w-full transition-all duration-700 ease-out"></div>
+                </div>
               </div>
             </div>
 
             {/* On-Time Delivery Card */}
-            <div className="bg-white p-6 sm:p-8 rounded-xl shadow-lg transition duration-300 transform hover:scale-105 cursor-pointer group">
-              <div className="text-center">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-5 sm:mb-6 transition-all duration-300 group-hover:bg-amber-600">
-                  <FaClock className="text-xl sm:text-2xl text-amber-800 transition-all duration-300 group-hover:text-white" />
+            <div className="bg-gray-50 p-8 rounded-2xl transition-all duration-300 hover:bg-white hover:shadow-2xl border border-transparent hover:border-gray-100 group">
+              <div className="flex flex-col items-start h-full">
+                <div className="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:rotate-6">
+                  <FaClock className="text-3xl text-amber-600" />
                 </div>
-                <p className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-800 transition-all duration-300 group-hover:text-amber-600">
+                <h3 className="text-2xl font-bold mb-4 text-gray-900 group-hover:text-amber-600 transition-colors">
                   On-Time Delivery
-                </p>
-                <p className="text-gray-700 text-sm sm:text-base">
+                </h3>
+                <p className="text-gray-600 text-base leading-relaxed mb-6 flex-grow">
                   Our streamlined project management and efficient logistics
                   ensure timely delivery of fabricated parts and components to
                   meet your deadlines.
                 </p>
+                <div className="w-full h-1 bg-gray-200 rounded-full overflow-hidden">
+                    <div className="h-full bg-amber-600 w-0 group-hover:w-full transition-all duration-700 ease-out"></div>
+                </div>
               </div>
             </div>
 
             {/* Expert Team Card */}
-            <div className="bg-white p-6 sm:p-8 rounded-xl shadow-lg transition duration-300 transform hover:scale-105 cursor-pointer group">
-              <div className="text-center">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-5 sm:mb-6 transition-all duration-300 group-hover:bg-purple-600">
-                  <FaUsers className="text-xl sm:text-2xl text-purple-800 transition-all duration-300 group-hover:text-white" />
+            <div className="bg-gray-50 p-8 rounded-2xl transition-all duration-300 hover:bg-white hover:shadow-2xl border border-transparent hover:border-gray-100 group">
+              <div className="flex flex-col items-start h-full">
+                <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:rotate-6">
+                  <FaUsers className="text-3xl text-purple-600" />
                 </div>
-                <p className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-800 transition-all duration-300 group-hover:text-purple-600">
+                <h3 className="text-2xl font-bold mb-4 text-gray-900 group-hover:text-purple-600 transition-colors">
                   Expert Team
-                </p>
-                <p className="text-gray-700 text-sm sm:text-base">
+                </h3>
+                <p className="text-gray-600 text-base leading-relaxed mb-6 flex-grow">
                   Our skilled engineers and experienced team of fabricators and
                   welders bring decades of expertise in structural fabrication,
                   product design, and mechanical assembly.
                 </p>
+                <div className="w-full h-1 bg-gray-200 rounded-full overflow-hidden">
+                    <div className="h-full bg-purple-600 w-0 group-hover:w-full transition-all duration-700 ease-out"></div>
+                </div>
               </div>
             </div>
 
             {/* Custom Solutions Card */}
-            <div className="bg-white p-6 sm:p-8 rounded-xl shadow-lg transition duration-300 transform hover:scale-105 cursor-pointer group">
-              <div className="text-center">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-5 sm:mb-6 transition-all duration-300 group-hover:bg-red-600">
-                  <FaHammer className="text-xl sm:text-2xl text-red-800 transition-all duration-300 group-hover:text-white" />
+            <div className="bg-gray-50 p-8 rounded-2xl transition-all duration-300 hover:bg-white hover:shadow-2xl border border-transparent hover:border-gray-100 group">
+              <div className="flex flex-col items-start h-full">
+                <div className="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:rotate-6">
+                  <FaHammer className="text-3xl text-red-600" />
                 </div>
-                <p className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-800 transition-all duration-300 group-hover:text-red-600">
+                <h3 className="text-2xl font-bold mb-4 text-gray-900 group-hover:text-red-600 transition-colors">
                   Custom Solutions
-                </p>
-                <p className="text-gray-700 text-sm sm:text-base">
+                </h3>
+                <p className="text-gray-600 text-base leading-relaxed mb-6 flex-grow">
                   We provide customized fabrication and manufacturing services
                   precisely engineered to meet unique project needs and
                   technical standards.
                 </p>
+                <div className="w-full h-1 bg-gray-200 rounded-full overflow-hidden">
+                    <div className="h-full bg-red-600 w-0 group-hover:w-full transition-all duration-700 ease-out"></div>
+                </div>
               </div>
             </div>
 
             {/* 24/7 Support Card */}
-            <div className="bg-white p-6 sm:p-8 rounded-xl shadow-lg transition duration-300 transform hover:scale-105 cursor-pointer group">
-              <div className="text-center">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-5 sm:mb-6 transition-all duration-300 group-hover:bg-indigo-600">
-                  <FaHeadset className="text-xl sm:text-2xl text-indigo-800 transition-all duration-300 group-hover:text-white" />
+            <div className="bg-gray-50 p-8 rounded-2xl transition-all duration-300 hover:bg-white hover:shadow-2xl border border-transparent hover:border-gray-100 group">
+              <div className="flex flex-col items-start h-full">
+                <div className="w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:rotate-6">
+                  <FaHeadset className="text-3xl text-indigo-600" />
                 </div>
-                <p className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-800 transition-all duration-300 group-hover:text-indigo-500">
+                <h3 className="text-2xl font-bold mb-4 text-gray-900 group-hover:text-indigo-600 transition-colors">
                   Support
-                </p>
-                <p className="text-gray-700 text-sm sm:text-base">
+                </h3>
+                <p className="text-gray-600 text-base leading-relaxed mb-6 flex-grow">
                   We offer around-the-clock technical and customer support to
                   ensure uninterrupted manufacturing operations and client
                   satisfaction.
                 </p>
+                <div className="w-full h-1 bg-gray-200 rounded-full overflow-hidden">
+                    <div className="h-full bg-indigo-600 w-0 group-hover:w-full transition-all duration-700 ease-out"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -146,65 +171,67 @@ const Homepage = () => {
       </section>
 
       {/* Quick Links Section */}
-      <section className="py-12 md:py-20 bg-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center text-center mb-8 md:mb-12">
-            <p className="text-3xl sm:text-4xl lg:text-4xl font-extrabold text-gray-900 mb-3 sm:mb-4">
+      <section className="py-20 md:py-28 bg-[#f8fafc] relative">
+         {/* Decorative background element */}
+         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="flex flex-col items-center text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#393185] mb-6 tracking-tight">
               Explore Our Capabilities
-            </p>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mt-3 sm:mt-4">
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Discover our industrial fabrication expertise, engineering
               precision, and on-time project execution.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            <Link to="/factory" className="group">
-              <div className="bg-white p-6 sm:p-8 rounded-xl hover:shadow-lg transition duration-300 group-hover:scale-105">
-                <i className="fas fa-industry text-4xl text-teal-600 mb-4"></i>
-                <p className="text-lg sm:text-xl font-bold mb-2 text-gray-800">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Link to="/factory" className="group h-full">
+              <div className="bg-white p-10 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 border border-gray-100 h-full flex flex-col items-center text-center hover:-translate-y-2">
+
+                <h3 className="text-2xl font-bold mb-3 text-gray-800 group-hover:text-teal-700 transition-colors">
                   Factory & Equipment
-                </p>
-                <p className="text-gray-600 text-sm sm:text-base mb-4">
+                </h3>
+                <p className="text-gray-600 mb-6 leading-relaxed flex-grow">
                   Explore our state-of-the-art factory equipped with advanced
                   equipments and precision tools for industrial manufacturing.
                 </p>
-                <span className="text-teal-600 font-semibold group-hover:translate-x-2 inline-block transition duration-300">
-                  Learn More <i className="fas fa-arrow-right ml-2"></i>
+                <span className="text-teal-600 font-bold group-hover:translate-x-1 inline-flex items-center transition-transform duration-300">
+                  Learn More <i className="fas fa-arrow-right ml-2 text-sm"></i>
                 </span>
               </div>
             </Link>
 
-            <Link to="/products" className="group">
-              <div className="bg-white p-6 sm:p-8 rounded-xl hover:shadow-lg transition duration-300 group-hover:scale-105">
-                <i className="fas fa-boxes text-4xl text-teal-600 mb-4"></i>
-                <p className="text-lg sm:text-xl font-bold mb-2 text-gray-800">
+            <Link to="/products" className="group h-full">
+              <div className="bg-white p-10 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 border border-gray-100 h-full flex flex-col items-center text-center hover:-translate-y-2">
+
+                <h3 className="text-2xl font-bold mb-3 text-gray-800 group-hover:text-[#393185] transition-colors">
                   Products & Components
-                </p>
-                <p className="text-gray-600 text-sm sm:text-base mb-4">
+                </h3>
+                <p className="text-gray-600 mb-6 leading-relaxed flex-grow">
                   Browse our industrial products, precision components, and
                   custom-built assemblies designed for durability and
                   performance.
                 </p>
-                <span className="text-teal-600 font-semibold group-hover:translate-x-2 inline-block transition duration-300">
-                  View Products <i className="fas fa-arrow-right ml-2"></i>
+                <span className="text-[#393185] font-bold group-hover:translate-x-1 inline-flex items-center transition-transform duration-300">
+                  View Products <i className="fas fa-arrow-right ml-2 text-sm"></i>
                 </span>
               </div>
             </Link>
 
-            <Link to="/certifications" className="group">
-              <div className="bg-white p-6 sm:p-8 rounded-xl hover:shadow-lg transition duration-300 group-hover:scale-105">
-                <i className="fas fa-certificate text-4xl text-teal-600 mb-4"></i>
-                <p className="text-lg sm:text-xl font-bold mb-2 text-gray-800">
+            <Link to="/certifications" className="group h-full">
+              <div className="bg-white p-10 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 border border-gray-100 h-full flex flex-col items-center text-center hover:-translate-y-2">
+
+                <h3 className="text-2xl font-bold mb-3 text-gray-800 group-hover:text-orange-700 transition-colors">
                   Quality Certifications
-                </p>
-                <p className="text-gray-600 text-sm sm:text-base mb-4">
+                </h3>
+                <p className="text-gray-600 mb-6 leading-relaxed flex-grow">
                   We are ISO certified with industry approvals, and quality
                   assurance standards that guarantee excellence.
                 </p>
-                <span className="text-teal-600 font-semibold group-hover:translate-x-2 inline-block transition duration-300">
-                  View Certifications{" "}
-                  <i className="fas fa-arrow-right ml-2"></i>
+                <span className="text-orange-600 font-bold group-hover:translate-x-1 inline-flex items-center transition-transform duration-300">
+                  View Certifications <i className="fas fa-arrow-right ml-2 text-sm"></i>
                 </span>
               </div>
             </Link>
@@ -213,38 +240,43 @@ const Homepage = () => {
       </section>
 
       {/* Contact CTA Section */}
-      <section className="py-12 md:py-20 bg-gray-900 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-6 sm:mb-8">
+      <section className="py-20 md:py-24 bg-[#393185] relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+             <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-white blur-3xl"></div>
+             <div className="absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-white blur-3xl"></div>
+        </div>
+
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 tracking-tight leading-tight">
             Ready to Start Your Project?
           </h2>
-          <p className="text-lg sm:text-xl mb-6 max-w-2xl mx-auto mt-2">
+          <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
             Connect with our expert team today to discuss your project needs,
             request a custom quote, or schedule a plant visit.
           </p>
 
-          {/* buttons stack on mobile, inline on sm+ */}
-          <div className="w-full sm:w-auto flex flex-col sm:flex-row gap-4 justify-center mt-4 sm:mt-6">
+          <div className="flex flex-col sm:flex-row gap-5 justify-center">
             <Link
               to="/contact"
-              className="w-full sm:w-auto flex items-center justify-center space-x-2 border-2 border-white text-white py-3 px-6 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:bg-white hover:text-gray-900"
+              className="inline-flex items-center justify-center bg-white text-[#393185] py-4 px-8 rounded-xl font-bold text-lg shadow-lg hover:bg-gray-50 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
             >
-              <i className="fas fa-envelope mr-2"></i>
-              <span>Get A Quote</span>
+              <i className="fas fa-envelope mr-3"></i>
+              Get A Quote
             </Link>
             <a
               href="tel:+1-555-123-4567"
-              className="w-full sm:w-auto flex items-center justify-center space-x-2 border-2 border-white text-white py-3 px-6 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:bg-white hover:text-gray-900"
+              className="inline-flex items-center justify-center bg-transparent border-2 border-white/30 text-white py-4 px-8 rounded-xl font-bold text-lg hover:bg-white/10 transition-all duration-300 backdrop-blur-sm"
             >
-              <i className="fas fa-phone mr-2"></i>
-              <span>Call Now</span>
+              <i className="fas fa-phone mr-3"></i>
+              Call Now
             </a>
           </div>
         </div>
       </section>
     </div>
-
   );
 };
+
 
 export default Homepage;

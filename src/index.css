@@ -4,3 +4,11 @@
 :root {
   --navbar-height: 4rem; /* matches h-16 */
 }
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}

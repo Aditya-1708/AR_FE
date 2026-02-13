@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -34,29 +33,37 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-slate-900 text-white py-14">
+    <footer className="bg-[#0B0F19] text-white pt-20 pb-10 border-t border-gray-800">
       <div className="container mx-auto px-6 lg:px-12">
         {/* Top Section */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
           {/* Company Info */}
-          <div>
-            <div className="flex items-center mb-5">
-              <i className="fas fa-industry text-2xl text-amber-500 mr-3"></i>
-              <h3 className="text-xl font-bold">AR Industries</h3>
+          <div className="space-y-6">
+            <div className="flex items-center gap-3">
+              <img
+                src="AR logo.png"
+                alt="AR Industries logo"
+                className="h-8 w-auto object-contain"
+              />
+              <h3 className="text-2xl font-bold tracking-tight text-white">
+                AR Industries
+              </h3>
             </div>
-            <p className="text-gray-300 mb-5 leading-relaxed">
+
+            <p className="text-gray-400 leading-relaxed text-sm lg:pr-6">
               Leading manufacturer specializing in precision metal fabrication,
               industrial components, and custom solutions for diverse industries.
+              Committed to quality and innovation.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex gap-4 pt-2">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
                   aria-label={social.label}
-                  className="text-gray-400 hover:text-amber-500 transition duration-200 transform hover:scale-110"
+                  className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-[#393185] hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-md hover:shadow-[#393185]/40"
                 >
-                  <i className={`${social.icon} text-xl`}></i>
+                  <i className={`${social.icon} text-lg`}></i>
                 </a>
               ))}
             </div>
@@ -64,14 +71,19 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-bold mb-5">Quick Links</h4>
+            <h4 className="text-lg font-bold text-white mb-6 relative inline-block after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-12 after:h-1 after:bg-[#393185] after:rounded-full">
+              Quick Links
+            </h4>
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   <Link
                     to={link.path}
-                    className="text-gray-300 hover:text-amber-500 transition duration-200 hover:translate-x-1 inline-block"
+                    className="group flex items-center text-gray-400 hover:text-white transition-colors duration-300"
                   >
+                    <span className="w-0 overflow-hidden group-hover:w-3 transition-all duration-300 text-[#393185] mr-0 group-hover:mr-2">
+                      <i className="fas fa-chevron-right text-xs"></i>
+                    </span>
                     {link.label}
                   </Link>
                 </li>
@@ -81,14 +93,16 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h4 className="text-lg font-bold mb-5">Our Services</h4>
-            <ul className="space-y-3 text-gray-300">
+            <h4 className="text-lg font-bold text-white mb-6 relative inline-block after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-12 after:h-1 after:bg-[#393185] after:rounded-full">
+              Our Services
+            </h4>
+            <ul className="space-y-3">
               {services.map((service, index) => (
                 <li
                   key={index}
-                  className="hover:text-white transition duration-200 flex items-start"
+                  className="text-gray-400 hover:text-white transition-colors duration-300 flex items-center gap-2"
                 >
-                  <i className="fas fa-arrow-right text-amber-500 mr-2 mt-1 text-sm"></i>
+                  <i className="fas fa-circle text-[4px] text-[#393185]"></i>
                   <span>{service}</span>
                 </li>
               ))}
@@ -97,39 +111,51 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-bold mb-5">Contact Information</h4>
-            <div className="space-y-4 text-gray-300">
-              <div className="flex items-start">
-                <i className="fas fa-map-marker-alt text-amber-500 mr-3 mt-1"></i>
-                <span className="leading-relaxed">
+            <h4 className="text-lg font-bold text-white mb-6 relative inline-block after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-12 after:h-1 after:bg-[#393185] after:rounded-full">
+              Contact Us
+            </h4>
+            <div className="space-y-6">
+              <div className="flex items-start gap-4 group">
+                <div className="mt-1 w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center flex-shrink-0 group-hover:bg-[#393185] transition-colors duration-300">
+                  <i className="fas fa-map-marker-alt text-gray-400 group-hover:text-white text-sm"></i>
+                </div>
+                <span className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors">
                   Plot no 125-C, KIADB Industrial Area, 2nd Phase<br />
                   Kudumalakunte Village, Gauribidanur (Tk)<br />
                   Chikkaballapur (Dist), Karnataka – 561208
                 </span>
               </div>
-              <div className="flex items-center">
-                <i className="fas fa-phone text-amber-500 mr-3"></i>
+
+              <div className="flex items-center gap-4 group">
+                <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center flex-shrink-0 group-hover:bg-[#393185] transition-colors duration-300">
+                  <i className="fas fa-phone-alt text-gray-400 group-hover:text-white text-sm"></i>
+                </div>
                 <a
                   href="tel:+919611103554"
-                  className="hover:text-amber-500 transition duration-200"
+                  className="text-gray-400 hover:text-white transition-colors font-medium"
                 >
-                  9611103554
+                  +91-9611103554
                 </a>
               </div>
-              <div className="flex items-center">
-                <i className="fas fa-envelope text-amber-500 mr-3"></i>
+
+              <div className="flex items-center gap-4 group">
+                <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center flex-shrink-0 group-hover:bg-[#393185] transition-colors duration-300">
+                  <i className="fas fa-envelope text-gray-400 group-hover:text-white text-sm"></i>
+                </div>
                 <a
                   href="mailto:arindustries2153@gmail.com"
-                  className="hover:text-amber-500 transition duration-200 break-all"
+                  className="text-gray-400 hover:text-white transition-colors break-all"
                 >
                   arindustries2153@gmail.com
                 </a>
               </div>
-              <div className="flex items-start">
-                <i className="fas fa-clock text-amber-500 mr-3 mt-1"></i>
-                <span>
+
+              <div className="flex items-start gap-4 group">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">
                   Mon - Sat: 8:00 AM - 6:00 PM<br />
-                  
                 </span>
               </div>
             </div>
@@ -137,36 +163,22 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-gray-700 mt-10 pt-6">
-          <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-            <p className="text-gray-400 text-sm mb-4 md:mb-0">
-              © {currentYear} AR Industries. All rights reserved.
+        <div className="border-t border-gray-800 pt-8 mt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-gray-500 text-sm text-center md:text-left">
+              &copy; {currentYear} AR Industries. All rights reserved.
             </p>
-            <div className="flex flex-wrap justify-center md:justify-end space-x-6 text-sm">
-              <a
-                href="#"
-                className="text-gray-400 hover:text-amber-500 transition duration-200"
-              >
-                Privacy Policy
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-amber-500 transition duration-200"
-              >
-                Terms of Service
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-amber-500 transition duration-200"
-              >
-                Cookie Policy
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-amber-500 transition duration-200"
-              >
-                Sitemap
-              </a>
+            <div className="flex flex-wrap justify-center gap-6 text-sm">
+              {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Sitemap'].map((item) => (
+                <a
+                  key={item}
+                  href="#"
+                  className="text-gray-500 hover:text-[#393185] transition-colors duration-300 relative group"
+                >
+                  {item}
+                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#393185] transition-all duration-300 group-hover:w-full"></span>
+                </a>
+              ))}
             </div>
           </div>
         </div>

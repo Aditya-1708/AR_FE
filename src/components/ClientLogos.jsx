@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ajaxLogo from "../assets/ajax.png";
 import dyLogo from "../assets/dy.jpg";
 import imtLogo from "../assets/imt.png";
 
 // Newly added logos
-import kscaLogo from "../assets/ksca.png";
-import promanLogo from "../assets/proman.png";
+import bflLogo from "../assets/bfl.png";
 import delkorLogo from "../assets/delkor.jpg";
+import flsLogo from "../assets/fls.svg";
+import kscaLogo from "../assets/ksca.png";
+import newField from "../assets/newField.svg";
+import promanLogo from "../assets/proman.png";
 import rollwellLogo from "../assets/rollwell.jpg";
+import tikllLogo from "../assets/tikll.png";
 
 const ClientLogos = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -21,6 +25,11 @@ const ClientLogos = () => {
     { name: "PROMAN", image: promanLogo },
     { name: "DELKOR", image: delkorLogo },
     { name: "ROLLWELL", image: rollwellLogo },
+    { name: "FLSmidth's", image: flsLogo },
+    { name: "Newfield", image: newField },
+    { name: "BFL", image: bflLogo },
+        { name: "TIKLL", image: tikllLogo },
+
   ];
 
   useEffect(() => {
@@ -41,7 +50,9 @@ const ClientLogos = () => {
             Trusted by Industry Leaders
           </h2>
           <p className="text-lg text-gray-800 max-w-2xl mx-auto font-medium">
-            We have built lasting partnerships with companies across diverse industries that trust us to deliver on-time and meet customer deadlines for their critical manufacturing needs.
+            We have built lasting partnerships with companies across diverse
+            industries that trust us to deliver on-time and meet customer
+            deadlines for their critical manufacturing needs.
           </p>
         </div>
 

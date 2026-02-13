@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const TestimonialSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -6,31 +6,44 @@ const TestimonialSlider = () => {
   const testimonials = [
     {
       id: 1,
-      name: "John Smith",
+      name: "Rajesh Kumar",
       company: "ConstructCorp",
-      position: "Operations Manager",
-      text: "Industrial Fabrication Co. has been our go-to partner for custom metal fabrication for over 5 years. Their attention to detail, quality craftsmanship, and timely delivery have consistently exceeded our expectations. The team's expertise and professionalism make them an invaluable partner.",
+      position: "Project Manager",
+      text: "AR Industries has consistently delivered high-quality fabricated components for our construction projects. Their precision, reliability, and on-time delivery have made them a trusted partner in our operations.",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face"
+      image:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face",
     },
     {
       id: 2,
-      name: "Sarah Johnson",
+      name: "Neha Patel",
       company: "ManuTech Inc",
-      position: "Engineering Director",
-      text: "The quality of work and customer service provided by Industrial Fabrication Co. is outstanding. They understand our unique requirements and consistently deliver products that meet our exact specifications. Their technical expertise and reliability make them our preferred fabrication partner.",
+      position: "Engineering Head",
+      text: "We rely on AR Industries for critical manufacturing assemblies. Their attention to detail and ability to meet strict specifications has significantly improved our production efficiency.",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b5e5?w=80&h=80&fit=crop&crop=face"
+      image:
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face",
     },
     {
       id: 3,
-      name: "Mike Davis",
+      name: "Amit Sharma",
       company: "Heavy Equipment Co",
       position: "Plant Manager",
-      text: "Working with Industrial Fabrication Co. has been a game-changer for our production efficiency. Their ability to handle complex projects while maintaining high quality standards is impressive. The team is responsive, knowledgeable, and always goes the extra mile to ensure our satisfaction.",
+      text: "The team at AR Industries understands industrial requirements perfectly. Their fabrication quality and quick turnaround times have helped us maintain smooth production schedules.",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face"
-    }
+      image:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face",
+    },
+    {
+      id: 4,
+      name: "Priya Nair",
+      company: "Energy Solutions",
+      position: "Procurement Lead",
+      text: "AR Industries has been a dependable partner for our energy infrastructure projects. Their consistent quality and professional communication make collaboration easy and efficient.",
+      rating: 5,
+      image:
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face",
+    },
   ];
 
   useEffect(() => {
@@ -50,14 +63,16 @@ const TestimonialSlider = () => {
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setCurrentSlide(
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length,
+    );
   };
 
   return (
     <div className="relative max-w-4xl mx-auto">
       {/* Testimonials Container */}
       <div className="overflow-hidden">
-        <div 
+        <div
           className="flex transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
         >
@@ -68,7 +83,10 @@ const TestimonialSlider = () => {
                 <div className="flex justify-center mb-6">
                   <div className="flex space-x-1">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <i key={i} className="fas fa-star text-yellow-400 text-xl"></i>
+                      <i
+                        key={i}
+                        className="fas fa-star text-yellow-400 text-xl"
+                      ></i>
                     ))}
                   </div>
                 </div>
@@ -80,13 +98,15 @@ const TestimonialSlider = () => {
 
                 {/* Author Info */}
                 <div className="flex items-center justify-center">
-                  <img 
-                    src={testimonial.image} 
+                  <img
+                    src={testimonial.image}
                     alt={testimonial.name}
                     className="w-12 h-12 rounded-full mr-4 object-cover"
                   />
                   <div className="text-center">
-                    <p className="font-bold text-gray-900">{testimonial.name}</p>
+                    <p className="font-bold text-gray-900">
+                      {testimonial.name}
+                    </p>
                     <p className="text-gray-600 text-sm">
                       {testimonial.position}, {testimonial.company}
                     </p>
@@ -119,7 +139,9 @@ const TestimonialSlider = () => {
             key={index}
             onClick={() => goToSlide(index)}
             className={`w-3 h-3 rounded-full transition-all duration-200 ${
-              index === currentSlide ? 'bg-blue-600' : 'bg-gray-300 hover:bg-gray-400'
+              index === currentSlide
+                ? "bg-blue-600"
+                : "bg-gray-300 hover:bg-gray-400"
             }`}
           />
         ))}

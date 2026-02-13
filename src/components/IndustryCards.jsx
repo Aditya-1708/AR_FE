@@ -1,14 +1,17 @@
-import React from "react";
 import { motion } from "framer-motion";
 
 // Logos
 import ajaxLogo from "../assets/ajax.png";
+import bflLogo from "../assets/bfl.png";
+import delkorLogo from "../assets/delkor.jpg";
 import dyLogo from "../assets/dy.jpg";
+import flsLogo from "../assets/fls.svg";
 import imtLogo from "../assets/imt.png";
 import kscaLogo from "../assets/ksca.png";
+import newField from "../assets/newField.svg";
 import promanLogo from "../assets/proman.png";
-import delkorLogo from "../assets/delkor.jpg";
 import rollwellLogo from "../assets/rollwell.jpg";
+import tikllLogo from "../assets/tikll.png";
 
 const IndustryCards = () => {
   const clients = [
@@ -60,6 +63,34 @@ const IndustryCards = () => {
       logo: rollwellLogo,
       description:
         "ROLLWELL designs next-generation conveyors and handling systems — setting benchmarks in durability and energy efficiency.",
+    },
+    {
+      id: 8,
+      name: "FLSmidth",
+      logo: flsLogo,
+      description:
+        "FLSmidth is a global leader in mining and cement technologies, providing innovative equipment and services for sustainable industrial growth.",
+    },
+    {
+      id: 9,
+      name: "Newfield",
+      logo: newField,
+      description:
+        "Newfield specializes in advanced pyro-processing systems, delivering high-performance solutions for the cement and mineral industries.",
+    },
+    {
+      id: 10,
+      name: "BFL",
+      logo: bflLogo,
+      description:
+        "BFL delivers precision-engineered industrial components and systems, supporting high-performance manufacturing and heavy engineering sectors.",
+    },
+    {
+      id: 11,
+      name: "TIKLL",
+      logo: tikllLogo,
+      description:
+        "TIKLL provides robust structural and industrial solutions, supporting large-scale infrastructure and port-related projects.",
     },
   ];
 
