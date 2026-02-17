@@ -52,8 +52,8 @@ const Footer = () => {
 
             <p className="text-gray-400 leading-relaxed text-sm lg:pr-6">
               Leading manufacturer specializing in precision metal fabrication,
-              industrial components, and custom solutions for diverse industries.
-              Committed to quality and innovation.
+              industrial components, and custom solutions for diverse
+              industries. Committed to quality and innovation.
             </p>
             <div className="flex gap-4 pt-2">
               {socialLinks.map((social, index) => (
@@ -120,15 +120,17 @@ const Footer = () => {
                   <i className="fas fa-map-marker-alt text-gray-400 group-hover:text-white text-sm"></i>
                 </div>
                 <span className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors">
-                  Plot no 125-C, KIADB Industrial Area, 2nd Phase<br />
-                  Kudumalakunte Village, Gauribidanur (Tk)<br />
+                  Plot no 125-C, KIADB Industrial Area, 2nd Phase
+                  <br />
+                  Kudumalakunte Village, Gauribidanur (Tk)
+                  <br />
                   Chikkaballapur (Dist), Karnataka – 561208
                 </span>
               </div>
 
               <div className="flex items-center gap-4 group">
                 <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center flex-shrink-0 group-hover:bg-[#393185] transition-colors duration-300">
-                  <i className="fas fa-phone-alt text-gray-400 group-hover:text-white text-sm"></i>
+                  <i className="fas fa-phone text-gray-400 group-hover:text-white text-sm"></i>
                 </div>
                 <a
                   href="tel:+919611103554"
@@ -151,11 +153,11 @@ const Footer = () => {
               </div>
 
               <div className="flex items-start gap-4 group">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+                <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center flex-shrink-0 group-hover:bg-[#393185] transition-colors duration-300">
+                  <i className="fas fa-clock text-gray-400 group-hover:text-white text-sm"></i>
+                </div>
                 <span className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">
-                  Mon - Sat: 8:00 AM - 6:00 PM<br />
+                  Mon - Sat: 8:00 AM - 6:00 PM
                 </span>
               </div>
             </div>
@@ -169,7 +171,12 @@ const Footer = () => {
               &copy; {currentYear} AR Industries. All rights reserved.
             </p>
             <div className="flex flex-wrap justify-center gap-6 text-sm">
-              {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Sitemap'].map((item) => (
+              {[
+                "Privacy Policy",
+                "Terms of Service",
+                "Cookie Policy",
+                "Sitemap",
+              ].map((item) => (
                 <a
                   key={item}
                   href="#"

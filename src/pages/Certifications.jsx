@@ -89,7 +89,7 @@ const Certifications = () => {
                                 className="w-full max-w-sm object-contain rounded-lg border border-gray-100"
                             />
                             <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-[#393185] rounded-full flex items-center justify-center text-white shadow-lg">
-                                <span className="font-bold text-center text-xs uppercase tracking-widest px-2">Certified Since 2015</span>
+                                <span className="font-bold text-center text-xs uppercase tracking-widest px-2">Certified Since 2023</span>
                             </div>
                         </div>
                     </div>

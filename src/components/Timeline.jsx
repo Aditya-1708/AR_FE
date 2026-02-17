@@ -94,7 +94,9 @@ const Timeline = () => {
                   {/* Text Content */}
                   <div
                     className={`w-full md:w-5/12 mb-6 md:mb-0 relative z-10 ${
-                      isLeft ? "md:text-right md:pr-10" : "md:text-left md:pl-10"
+                      isLeft
+                        ? "md:text-right md:pr-10"
+                        : "md:text-left md:pl-10"
                     }`}
                   >
                     <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 h-full">
@@ -123,11 +125,11 @@ const Timeline = () => {
                       isLeft ? "md:pl-10" : "md:pr-10"
                     }`}
                   >
-                    <div className="rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 h-48 md:h-56 bg-white">
+<div className="rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 h-48 md:h-56 bg-gray-100 flex items-center justify-center">
                       <img
                         src={item.image}
                         alt={item.title}
-                        className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+                        className="max-w-full max-h-full object-contain transform hover:scale-105 transition-transform duration-500"
                         loading="lazy"
                       />
                     </div>

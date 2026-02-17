@@ -8,7 +8,7 @@ const StatsCounter = () => {
     { number: 3, label: "Years Experience", suffix: "+" },
     { number: 200, label: "Orders Completed", suffix: "+" },
     { number: 100, label: "Team Members", suffix: "+" },
-    { number: 24, label: "Hour Support", suffix: "/7" },
+    { number: 100, label: "On-Time Delivery", suffix: "%" },
   ];
 
   useEffect(() => {
