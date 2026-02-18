@@ -246,7 +246,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="min-h-screen pt-20 bg-gray-50 font-sans">
+    <div className="min-h-screen  bg-gray-50 font-sans">
       {/* ================= HERO ================= */}
       <section className="relative py-24 md:py-32 flex flex-col items-center justify-center text-white text-center px-6 overflow-hidden bg-[#393185]">
         {/* Abstract Background Shapes */}

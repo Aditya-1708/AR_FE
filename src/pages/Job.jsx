@@ -49,7 +49,7 @@ function Job() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-20 pb-12 font-sans">
+    <div className="min-h-screen bg-gray-50 pb-12 font-sans">
       {/* Header / Breadcrumb */}
       <div className="bg-[#393185] text-white py-12">
           <div className="container mx-auto px-4">
