@@ -62,7 +62,7 @@ const AboutUs = () => {
               <div className="absolute -top-4 -left-4 w-24 h-24 bg-blue-50 rounded-tl-3xl -z-10"></div>
               <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-blue-50 rounded-br-3xl -z-10"></div>
               <img
-                src="AboutUs.jpg"
+                src="AboutUs.webp"
                 alt="Factory Overview"
                 className="rounded-2xl shadow-xl w-full object-cover h-[400px] md:h-[500px]"
               />
