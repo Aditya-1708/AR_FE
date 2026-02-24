@@ -166,27 +166,23 @@ const Footer = () => {
 
         {/* Bottom Section */}
         <div className="border-t border-gray-800 pt-8 mt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-500 text-sm text-center md:text-left">
+          <div className="flex flex-col items-center justify-center gap-1 text-center">
+            <p className="text-gray-500 text-sm">
               &copy; {currentYear} AR Industries. All rights reserved.
             </p>
-            <div className="flex flex-wrap justify-center gap-6 text-sm">
-              {[
-                "Privacy Policy",
-                "Terms of Service",
-                "Cookie Policy",
-                "Sitemap",
-              ].map((item) => (
-                <a
-                  key={item}
-                  href="#"
-                  className="text-gray-500 hover:text-[#393185] transition-colors duration-300 relative group"
-                >
-                  {item}
-                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#393185] transition-all duration-300 group-hover:w-full"></span>
-                </a>
-              ))}
-            </div>
+
+            <p className="text-gray-600 text-xs">
+              Crafted by
+              <a
+                href="https://www.instagram.com/brandstorysocials?igsh=MXFoamFnNWpoZDR3cA=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-1 text-[#393185] font-medium hover:text-white transition-all duration-300 relative group"
+              >
+                Brand Story Socials
+                <span className="absolute left-0 -bottom-1 w-0 h-px bg-[#393185] transition-all duration-300 group-hover:w-full"></span>
+              </a>
+            </p>
           </div>
         </div>
       </div>

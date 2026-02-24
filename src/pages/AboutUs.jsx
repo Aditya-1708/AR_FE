@@ -22,30 +22,28 @@ const AboutUs = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <section className="relative h-[60vh] min-h-[400px] flex flex-col items-center justify-center text-white text-center px-6 overflow-hidden">
-        <div className="absolute inset-0 bg-[#393185]"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent"></div>
-        
-        {/* Decorative circles */}
-        <div className="absolute top-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+      <section className="relative py-24 md:py-32 flex flex-col items-center justify-center text-white text-center px-6 overflow-hidden bg-[#393185]">
+        {/* Abstract Background Shapes */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10 pointer-events-none">
+          <div className="absolute -top-1/2 -left-1/4 w-[800px] h-[800px] rounded-full bg-white blur-3xl"></div>
+          <div className="absolute top-1/2 -right-1/4 w-[600px] h-[600px] rounded-full bg-white blur-3xl"></div>
+        </div>
 
-        <motion.div
-          className="relative z-10 max-w-4xl mx-auto"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-semibold tracking-wider mb-6 border border-white/30">
-            SINCE 2010
+        <div className="relative z-10 max-w-4xl mx-auto">
+          {/* Optional Tagline (you can remove if not needed) */}
+          <span className="inline-block px-3 py-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-sm font-semibold tracking-wider mb-6">
+            PRECISION MANUFACTURING
           </span>
-          <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight leading-tight">
+
+          <h1 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight leading-tight">
             Building the Future
           </h1>
-          <p className="text-xl md:text-2xl text-gray-200 leading-relaxed max-w-3xl mx-auto font-light">
-            Specialists in custom fabrication components and tailored industrial solutions.
+
+          <p className="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
+            Specialists in custom fabrication components and tailored industrial
+            solutions.
           </p>
-        </motion.div>
+        </div>
       </section>
 
       {/* Our Story */}
@@ -67,7 +65,7 @@ const AboutUs = () => {
                 className="rounded-2xl shadow-xl w-full object-cover h-[400px] md:h-[500px]"
               />
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -78,19 +76,24 @@ const AboutUs = () => {
                 Our Story
               </h2>
               <p className="text-4xl font-bold mb-8 text-gray-900 leading-tight">
-                From Humble Beginnings to <span className="text-[#393185]">Industrial Excellence</span>
+                From Humble Beginnings to{" "}
+                <span className="text-[#393185]">Industrial Excellence</span>
               </p>
 
               <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
                 <p>
-                  <strong className="text-gray-900">A R Industries</strong> is part of a visionary group led by industrialist Mr. Umesh Patil. 
-                  Strategically located in KIADB Industrial Area, Gauribidanur, we sit at the heart of a thriving 
-                  industrial ecosystem, enabling rapid collaboration and logistics.
+                  <strong className="text-gray-900">A R Industries</strong> is
+                  part of a visionary group led by industrialist Mr. Umesh
+                  Patil. Strategically located in KIADB Industrial Area,
+                  Gauribidanur, we sit at the heart of a thriving industrial
+                  ecosystem, enabling rapid collaboration and logistics.
                 </p>
                 <p>
-                  What started as a small fabrication unit has evolved into a powerhouse of manufacturing. 
-                  We now operate state-of-the-art facilities featuring CNC plasma cutting machines, overhead cranes, 
-                  automated welding stations, and advanced paint booths—delivering precision at scale.
+                  What started as a small fabrication unit has evolved into a
+                  powerhouse of manufacturing. We now operate state-of-the-art
+                  facilities featuring CNC plasma cutting machines, overhead
+                  cranes, automated welding stations, and advanced paint
+                  booths—delivering precision at scale.
                 </p>
               </div>
             </motion.div>
@@ -99,9 +102,18 @@ const AboutUs = () => {
       </section>
 
       {/* Vision & Mission */}
-      <section id="vision" className="py-24 bg-gray-50 relative overflow-hidden">
+      <section
+        id="vision"
+        className="py-24 bg-gray-50 relative overflow-hidden"
+      >
         {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#393185 1px, transparent 1px)', backgroundSize: '32px 32px' }}></div>
+        <div
+          className="absolute inset-0 opacity-[0.03] pointer-events-none"
+          style={{
+            backgroundImage: "radial-gradient(#393185 1px, transparent 1px)",
+            backgroundSize: "32px 32px",
+          }}
+        ></div>
 
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="text-center mb-16 max-w-3xl mx-auto">
@@ -109,7 +121,8 @@ const AboutUs = () => {
               Our Vision & Mission
             </h2>
             <p className="text-xl text-gray-600">
-              Guided by purpose, driven by passion. We are committed to redefining quality and customer satisfaction.
+              Guided by purpose, driven by passion. We are committed to
+              redefining quality and customer satisfaction.
             </p>
           </div>
 
@@ -124,10 +137,13 @@ const AboutUs = () => {
               <div className="w-16 h-16 bg-blue-50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <i className="fas fa-eye text-3xl text-blue-600"></i>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                Our Vision
+              </h3>
               <p className="text-gray-600 text-lg leading-relaxed">
-                To be the premier choice for innovative metal fabrication solutions globally, 
-                setting industry standards for quality, reliability, and engineering excellence.
+                To be the premier choice for innovative metal fabrication
+                solutions globally, setting industry standards for quality,
+                reliability, and engineering excellence.
               </p>
             </motion.div>
 
@@ -141,10 +157,13 @@ const AboutUs = () => {
               <div className="w-16 h-16 bg-indigo-50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <i className="fas fa-bullseye text-3xl text-[#393185]"></i>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                Our Mission
+              </h3>
               <p className="text-gray-600 text-lg leading-relaxed">
-                Delivering exceptional quality products through advanced manufacturing techniques, 
-                continuous innovation, and an unwavering commitment to exceeding customer expectations.
+                Delivering exceptional quality products through advanced
+                manufacturing techniques, continuous innovation, and an
+                unwavering commitment to exceeding customer expectations.
               </p>
             </motion.div>
           </div>
@@ -155,13 +174,16 @@ const AboutUs = () => {
       <section id="team" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
-            <span className="text-[#393185] font-bold tracking-wider uppercase text-sm mb-3 block">Leadership</span>
+            <span className="text-[#393185] font-bold tracking-wider uppercase text-sm mb-3 block">
+              Leadership
+            </span>
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
               Meet Our Team
             </h2>
             <div className="w-24 h-1 bg-[#393185] mx-auto rounded-full mb-6"></div>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Our strength lies in a dedicated leadership team and skilled workforce driving excellence across all operations.
+              Our strength lies in a dedicated leadership team and skilled
+              workforce driving excellence across all operations.
             </p>
           </div>
 
@@ -177,15 +199,15 @@ const AboutUs = () => {
               >
                 {/* Image Container */}
                 <div className="h-80 overflow-hidden relative bg-gray-100">
-                    <div className="absolute inset-0 bg-[#393185]/0 group-hover:bg-[#393185]/10 transition-colors z-10 duration-300"></div>
-                    <img
-                        src={`${import.meta.env.VITE_BACKEND_URL}/uploads/${member.image}`}
-                        alt={member.name}
-                        className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                        loading="lazy"
-                    />
+                  <div className="absolute inset-0 bg-[#393185]/0 group-hover:bg-[#393185]/10 transition-colors z-10 duration-300"></div>
+                  <img
+                    src={`${import.meta.env.VITE_BACKEND_URL}/uploads/${member.image}`}
+                    alt={member.name}
+                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
                 </div>
-                
+
                 {/* Content */}
                 <div className="p-6 text-center relative z-20 bg-white">
                   <h3 className="text-xl font-bold text-gray-900 mb-1 group-hover:text-[#393185] transition-colors">
@@ -203,13 +225,12 @@ const AboutUs = () => {
 
       {/* Timeline */}
       <section id="timeline" className="bg-gray-50 border-t border-gray-200">
-        <div >
-            <Timeline />
+        <div>
+          <Timeline />
         </div>
       </section>
     </div>
   );
 };
-
 
 export default AboutUs;
