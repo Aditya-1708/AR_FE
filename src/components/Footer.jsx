@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -165,22 +166,31 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section */}
+
         <div className="border-t border-gray-800 pt-8 mt-8">
           <div className="flex flex-col items-center justify-center gap-1 text-center">
             <p className="text-gray-500 text-sm">
               &copy; {currentYear} AR Industries. All rights reserved.
             </p>
 
-            <p className="text-gray-600 text-xs">
-              Crafted by
+            <p className="text-gray-600 text-xs flex items-center gap-1">
+              Managed by
               <a
                 href="https://www.instagram.com/brandstorysocials?igsh=MXFoamFnNWpoZDR3cA=="
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ml-1 text-[#393185] font-medium hover:text-white transition-all duration-300 relative group"
+                className="ml-1 flex items-center gap-2 font-medium transition-all duration-300 group"
               >
-                Brand Story Socials
-                <span className="absolute left-0 -bottom-1 w-0 h-px bg-[#393185] transition-all duration-300 group-hover:w-full"></span>
+                {/* Instagram Icon with Gradient */}
+                <span className="bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 p-[2px] rounded-full group-hover:scale-110 transition-all duration-300">
+                  <FaInstagram className="text-white text-sm" />
+                </span>
+
+                {/* Text */}
+                <span className="relative text-[#393185] group-hover:text-white transition-all duration-300">
+                  Brand Story Socials
+                  <span className="absolute left-0 -bottom-1 w-0 h-px bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                </span>
               </a>
             </p>
           </div>
