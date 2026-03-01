@@ -11,7 +11,7 @@ import kscaLogo from "../assets/ksca.png";
 import newField from "../assets/newField.svg";
 import promanLogo from "../assets/proman.png";
 import rollwellLogo from "../assets/rollwell.jpg";
-import tikllLogo from "../assets/tikll.png";
+import tiklLogo from "../assets/tikl.png";
 
 const ClientLogos = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -28,7 +28,7 @@ const ClientLogos = () => {
     { name: "FLSmidth's", image: flsLogo },
     { name: "Newfield", image: newField },
     { name: "BFL", image: bflLogo },
-        { name: "TIKLL", image: tikllLogo },
+        { name: "TIKL", image: tiklLogo },
 
   ];
 

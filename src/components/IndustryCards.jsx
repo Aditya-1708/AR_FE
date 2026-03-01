@@ -11,7 +11,7 @@ import kscaLogo from "../assets/ksca.png";
 import newField from "../assets/newField.svg";
 import promanLogo from "../assets/proman.png";
 import rollwellLogo from "../assets/rollwell.jpg";
-import tikllLogo from "../assets/tikll.png";
+import tiklLogo from "../assets/tikl.png";
 
 const IndustryCards = () => {
   const clients = [
@@ -87,10 +87,10 @@ const IndustryCards = () => {
     },
     {
       id: 11,
-      name: "TIKLL",
-      logo: tikllLogo,
+      name: "TIKL",
+      logo: tiklLogo,
       description:
-        "TIKLL provides robust structural and industrial solutions, supporting large-scale infrastructure and port-related projects.",
+        "TIKL provides robust structural and industrial solutions, supporting large-scale infrastructure and port-related projects.",
     },
   ];
 
