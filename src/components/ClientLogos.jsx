@@ -28,8 +28,7 @@ const ClientLogos = () => {
     { name: "FLSmidth's", image: flsLogo },
     { name: "Newfield", image: newField },
     { name: "BFL", image: bflLogo },
-        { name: "TIKL", image: tiklLogo },
-
+    { name: "TKIL", image: tiklLogo },
   ];
 
   useEffect(() => {

@@ -87,10 +87,10 @@ const IndustryCards = () => {
     },
     {
       id: 11,
-      name: "TIKL",
+      name: "TKIL",
       logo: tiklLogo,
       description:
-        "TIKL provides robust structural and industrial solutions, supporting large-scale infrastructure and port-related projects.",
+        "TKIL provides robust structural and industrial solutions, supporting large-scale infrastructure and port-related projects.",
     },
   ];
 
